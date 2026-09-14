@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TPCeV | Event Management System</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f5f7fb;
+            padding: 20px;
+        }
+
+        /* MAIN LOGIN BOX */
+        .login-wrapper {
+            width: 900px;
+            min-height: 540px;
+            display: flex;
+            background: #ffffff;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(18, 59, 42, 0.14);
+        }
+
+        /* LEFT SIDE */
+        .welcome-section {
+            width: 50%;
+            background: linear-gradient(145deg, #123b2a, #2f7d58);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .welcome-content {
+            width: 100%;
+        }
+
+        /* LOGO */
+        .logo {
+            width: 105px;
+            height: 105px;
+            border-radius: 50%;
+            background: white;
+            color: #123b2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+        }
+
+        .welcome-content h1 {
+            font-size: 38px;
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        .welcome-content h2 {
+            font-size: 18px;
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
+        .welcome-content p {
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: 0.9;
+            max-width: 330px;
+            margin: auto;
+        }
+
+        /* RIGHT SIDE */
+        .login-section {
+            width: 50%;
+            padding: 55px 60px;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-content {
+            width: 100%;
+        }
+
+        .login-title {
+            margin-bottom: 30px;
+        }
+
+        .login-title h2 {
+            font-size: 28px;
+            color: #17221d;
+            margin-bottom: 7px;
+        }
+
+        .login-title p {
+            font-size: 14px;
+            color: #7b8794;
+        }
+
+        /* INPUT */
+        .form-group {
+            margin-bottom: 21px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #34413a;
+            margin-bottom: 8px;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .input-container input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #d0d5dd;
+            border-radius: 9px;
+            padding: 0 15px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+            background: #fff;
+        }
+
+        .input-container input:focus {
+            border-color: #2f7d58;
+            box-shadow: 0 0 0 3px rgba(47, 125, 88, 0.12);
+        }
+
+        .input-container input.error {
+            border-color: #d92d20;
+        }
+
+        .input-container input.success {
+            border-color: #2f7d58;
+        }
+
+        /* PASSWORD EYE */
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: #667085;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .password-toggle:hover {
+            color: #2f7d58;
+        }
+
+        /* ERROR MESSAGE */
+        .error-message {
+            display: none;
+            color: #d92d20;
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* OPTIONS */
+        .login-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #667085;
+            cursor: pointer;
+        }
+
+        .remember input {
+            width: 15px;
+            height: 15px;
+            cursor: pointer;
+            accent-color: #2f7d58;
+        }
+
+        .forgot {
+            color: #2f7d58;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+            color: #123b2a;
+        }
+
+        /* LOGIN BUTTON */
+        .login-button {
+            width: 100%;
+            height: 49px;
+            border: none;
+            border-radius: 9px;
+            background: #2f7d58;
+            color: white;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-button:hover {
+            background: #123b2a;
+        }
+
+        .login-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        /* LOGIN MESSAGE */
+        .login-message {
+            display: none;
+            margin-top: 15px;
+            padding: 11px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 13px;
+        }
+
+        .login-message.success {
+            display: block;
+            color: #267049;
+            background: #e6f3ec;
+            border: 1px solid #b9ddc8;
+        }
+
+        .login-message.error {
+            display: block;
+            color: #b42318;
+            background: #fef3f2;
+            border: 1px solid #fecdca;
+        }
+
+        /* FOOTER */
+        .footer {
+            text-align: center;
+            margin-top: 28px;
+            font-size: 11px;
+            color: #98a2b3;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+
+            .login-wrapper {
+                width: 100%;
+                max-width: 450px;
+                min-height: auto;
+            }
+
+            .welcome-section {
+                display: none;
+            }
+
+            .login-section {
+                width: 100%;
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 400px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .login-section {
+                padding: 35px 22px;
+            }
+
+            .login-title h2 {
+                font-size: 25px;
+            }
+
+            .login-options {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-wrapper">
+
+        <!-- LEFT / WELCOME SECTION -->
+        <div class="welcome-section">
+
+            <div class="welcome-content">
+
+                <div class="logo">
+                    TPC
+                </div>
+
+                <h1>TPCeV</h1>
+
+                <h2>Event Management System</h2>
+
+                <p>
+                    A centralized system designed to help manage,
+                    organize, monitor, and document events at
+                    Talibon Polytechnic College.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT / LOGIN SECTION -->
+        <div class="login-section">
+
+            <div class="login-content">
+
+                <div class="login-title">
+
+                    <h2>Welcome Back!</h2>
+
+                    <p>
+                        Please enter your account details to continue.
+                    </p>
+
+                </div>
+
+
+                <form id="loginForm" novalidate>
+
+                    <!-- USERNAME -->
+                    <div class="form-group">
+
+                        <label for="username">
+                            Username
+                        </label>
+
+                        <div class="input-container">
+
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                placeholder="Enter your username"
+                                autocomplete="username"
+                            >
+
+                        </div>
+
+                        <div id="usernameError" class="error-message">
+                            Please enter your username.
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+                    <div class="form-group">
+
+                        <label for="password">
+                            Password
+                        </label>
+
+                        <div class="input-container">
+
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <div id="passwordError" class="error-message">
+                            Please enter your password.
+                        </div>
+
+                    </div>
+
+
+                    <!-- OPTIONS -->
+                    <div class="login-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            Remember Me
+
+                        </label>
+
+                        <a
+                            href="#"
+                            class="forgot"
+                            id="forgotPassword"
+                        >
+                            Forgot Password?
+                        </a>
+
+                    </div>
+
+
+                    <!-- LOGIN BUTTON -->
+                    <button
+                        type="submit"
+                        class="login-button"
+                        id="loginButton"
+                    >
+                        Login
+                    </button>
+
+
+                    <!-- MESSAGE -->
+                    <div
+                        id="loginMessage"
+                        class="login-message"
+                    ></div>
+
+                </form>
+
+
+                <div class="footer">
+
+                    © 2026 TPCeV — Talibon Polytechnic College
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        /* =========================================
+           TPCeV LOGIN VALIDATION
+           ========================================= */
+
+        const loginForm = document.getElementById("loginForm");
+
+        const username = document.getElementById("username");
+        const password = document.getElementById("password");
+
+        const usernameError = document.getElementById("usernameError");
+        const passwordError = document.getElementById("passwordError");
+
+        const loginButton = document.getElementById("loginButton");
+        const loginMessage = document.getElementById("loginMessage");
+
+        const passwordToggle =
+            document.getElementById("passwordToggle");
+
+        const forgotPassword =
+            document.getElementById("forgotPassword");
+
+
+        /* =========================================
+           DEMO ACCOUNT
+           ========================================= */
+
+        const VALID_USERNAME = "admin";
+        const VALID_PASSWORD = "admin123";
+
+
+        /* =========================================
+           SHOW / HIDE PASSWORD
+           ========================================= */
+
+        passwordToggle.addEventListener("click", function () {
+
+            if (password.type === "password") {
+
+                password.type = "text";
+                passwordToggle.textContent = "Hide";
+
+            } else {
+
+                password.type = "password";
+                passwordToggle.textContent = "Show";
+
+            }
+
+        });
+
+
+        /* =========================================
+           CLEAR ERROR WHEN USER TYPES
+           ========================================= */
+
+        username.addEventListener("input", function () {
+
+            username.classList.remove("error");
+            usernameError.classList.remove("show");
+
+        });
+
+
+        password.addEventListener("input", function () {
+
+            password.classList.remove("error");
+            passwordError.classList.remove("show");
+
+        });
+
+
+        /* =========================================
+           LOGIN VALIDATION
+           ========================================= */
+
+        loginForm.addEventListener("submit", function (event) {
+
+            event.preventDefault();
+
+            let valid = true;
+
+            const enteredUsername =
+                username.value.trim();
+
+            const enteredPassword =
+                password.value;
+
+
+            loginMessage.className = "login-message";
+            loginMessage.textContent = "";
+
+
+            /* USERNAME VALIDATION */
+
+            if (enteredUsername === "") {
+
+                username.classList.add("error");
+
+                usernameError.textContent =
+                    "Please enter your username.";
+
+                usernameError.classList.add("show");
+
+                valid = false;
+
+            }
+
+
+            /* PASSWORD VALIDATION */
+
+            if (enteredPassword === "") {
+
+                password.classList.add("error");
+
+                passwordError.textContent =
+                    "Please enter your password.";
+
+                passwordError.classList.add("show");
+
+                valid = false;
+
+            }
+
+
+            if (!valid) {
+                return;
+            }
+
+
+            /* PASSWORD LENGTH */
+
+            if (enteredPassword.length < 6) {
+
+                password.classList.add("error");
+
+                passwordError.textContent =
+                    "Password must be at least 6 characters.";
+
+                passwordError.classList.add("show");
+
+                return;
+
+            }
+
+
+            /* =====================================
+               CHECK LOGIN CREDENTIALS
+               ===================================== */
+
+            if (
+                enteredUsername === VALID_USERNAME &&
+                enteredPassword === VALID_PASSWORD
+            ) {
+
+                username.classList.add("success");
+                password.classList.add("success");
+
+                loginMessage.className =
+                    "login-message success";
+
+                loginMessage.textContent =
+                    "Login successful! Redirecting...";
+
+                loginButton.disabled = true;
+
+                loginButton.textContent =
+                    "Logging in...";
+
+
+                /* SAVE LOGIN STATUS */
+
+                localStorage.setItem(
+                    "tpcevLoggedIn",
+                    "true"
+                );
+
+                localStorage.setItem(
+                    "tpcevAdmin",
+                    "Administrator"
+                );
+
+
+                /* REMEMBER USERNAME */
+
+                const rememberMe =
+                    document.getElementById("rememberMe");
+
+                if (rememberMe.checked) {
+
+                    localStorage.setItem(
+                        "tpcev_username",
+                        enteredUsername
+                    );
+
+                } else {
+
+                    localStorage.removeItem(
+                        "tpcev_username"
+                    );
+
+                }
+
+
+                /* REDIRECT */
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "dashboard.html";
+
+                }, 1200);
+
+
+            } else {
+
+                username.classList.add("error");
+                password.classList.add("error");
+
+                loginMessage.className =
+                    "login-message error";
+
+                loginMessage.textContent =
+                    "Invalid username or password.";
+
+            }
+
+        });
+
+
+        /* =========================================
+           REMEMBERED USERNAME
+           ========================================= */
+
+        window.addEventListener("load", function () {
+
+            const savedUsername =
+                localStorage.getItem("tpcev_username");
+
+            if (savedUsername) {
+
+                username.value = savedUsername;
+
+                document.getElementById(
+                    "rememberMe"
+                ).checked = true;
+
+            }
+
+        });
+
+
+        /* =========================================
+           FORGOT PASSWORD
+           ========================================= */
+
+        forgotPassword.addEventListener("click", function (event) {
+
+            event.preventDefault();
+
+            loginMessage.className =
+                "login-message error";
+
+            loginMessage.textContent =
+                "Please contact the system administrator to reset your password.";
+
+        });
+
+    </script>
+
+</body>
+</html>
