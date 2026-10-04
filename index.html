@@ -1618,6 +1618,32 @@ textarea:focus,select:focus,input[type=date]:focus
   </div>
 </div>
 
+<!-- Event details modal -->
+<div class="overlay hidden" id="eventOverlay" role="dialog" aria-modal="true" aria-labelledby="eventDetailTitle">
+  <div class="modal event-detail-modal">
+    <div class="event-detail-cover" id="eventDetailCover">
+      <div class="event-detail-icon" id="eventDetailIcon"></div>
+      <div class="ev-date" id="eventDetailDate"></div>
+    </div>
+    <div class="event-detail-body">
+      <div class="event-detail-heading">
+        <div>
+          <span class="badge" id="eventDetailStatus"></span>
+          <h2 id="eventDetailTitle"></h2>
+        </div>
+      </div>
+      <p class="event-detail-desc" id="eventDetailDesc"></p>
+      <div class="event-detail-meta">
+        <div>${icon("clock")}<span><b>Date</b><span id="eventDetailDateText"></span></span></div>
+        <div>${icon("pin")}<span><b>Venue</b><span id="eventDetailPlace"></span></span></div>
+        <div>${icon("users")}<span><b>Audience</b><span id="eventDetailAudience"></span></span></div>
+        <div>${icon("users")}<span><b>Registered</b><span id="eventDetailRegs"></span></span></div>
+      </div>
+      <button class="btn btn-primary" id="closeEvent" type="button" style="width:100%;justify-content:center">Close</button>
+    </div>
+  </div>
+</div>
+
 <!-- Day modal -->
 <div class="overlay hidden" id="dayOverlay" role="dialog" aria-modal="true">
   <div class="modal">
@@ -1706,6 +1732,7 @@ function eventCard(e){
       <div class="meta">${icon("pin")}${e.place}</div>
       <div class="meta">${icon("users")}${e.aud}</div>
       <span class="badge b-${e.status}">${e.status.toUpperCase()}</span>
+      <button class="btn btn-primary ev-view" type="button" data-view-event="${e.id}">${icon("eye")} View Event</button>
     </div></article>`;
 }
 
@@ -1745,9 +1772,31 @@ document.addEventListener("click",e=>{
   }
   const day = e.target.closest(".d.has"); if(day) showDay(day.dataset.date);
 });
+function showEventDetails(id){
+  const e=EVENTS.find(x=>String(x.id)===String(id));
+  if(!e)return;
+  $("#eventDetailTitle").textContent=e.title;
+  $("#eventDetailDesc").textContent=e.desc;
+  $("#eventDetailDateText").textContent=fmtRange(e);
+  $("#eventDetailPlace").textContent=e.place;
+  $("#eventDetailAudience").textContent=e.aud;
+  $("#eventDetailRegs").textContent=`${e.regs} participants`;
+  const status=$("#eventDetailStatus"); status.textContent=e.status.toUpperCase(); status.className=`badge b-${e.status}`;
+  $("#eventDetailCover").style.background=`linear-gradient(135deg,${e.color[0]},${e.color[1]})`;
+  $("#eventDetailIcon").innerHTML=icon(e.icon);
+  const d=pd(e.start);
+  $("#eventDetailDate").innerHTML=`<span>${MSHORT[d.getMonth()]}</span><b>${d.getDate()}</b><i>${d.getFullYear()}</i>`;
+  $("#eventOverlay").classList.remove("hidden");
+}
+document.addEventListener("click",e=>{
+  const view=e.target.closest("[data-view-event]");
+  if(view){e.preventDefault();showEventDetails(view.dataset.viewEvent);return;}
+});
+$("#closeEvent").onclick=()=>$("#eventOverlay").classList.add("hidden");
+$("#eventOverlay").onclick=e=>{if(e.target.id==="eventOverlay")e.target.classList.add("hidden")};
 document.addEventListener("keydown",e=>{
   if((e.key==="Enter"||e.key===" ") && e.target.matches(".d.has")){e.preventDefault();showDay(e.target.dataset.date)}
-  if(e.key==="Escape"){ $("#loginOverlay").classList.add("hidden"); $("#dayOverlay").classList.add("hidden"); }
+  if(e.key==="Escape"){ $("#loginOverlay").classList.add("hidden"); $("#dayOverlay").classList.add("hidden"); $("#eventOverlay").classList.add("hidden"); }
 });
 $("#closeDay").onclick = ()=>$("#dayOverlay").classList.add("hidden");
 $("#dayOverlay").onclick = e=>{ if(e.target.id==="dayOverlay") e.target.classList.add("hidden") };

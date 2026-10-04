@@ -398,6 +398,81 @@ nav.main a:hover,nav.main a.active
   gap:6px;
   flex:1
 }
+.ev-view
+{
+  width:100%;
+  justify-content:center;
+  margin-top:auto;
+  padding:8px 10px;
+  font-size:12px
+}
+.event-detail-modal
+{
+  width:min(560px,calc(100vw - 30px));
+  padding:0;
+  overflow:hidden
+}
+.event-detail-cover
+{
+  height:150px;
+  position:relative;
+  display:grid;
+  place-items:center;
+  color:#fff
+}
+.event-detail-icon svg
+{
+  width:62px;
+  height:62px;
+  stroke-width:1.4
+}
+.event-detail-cover .ev-date
+{
+  left:14px
+}
+.event-detail-body
+{
+  padding:20px
+}
+.event-detail-heading h2
+{
+  margin:8px 0 0;
+  color:var(--green-900);
+  font-size:22px
+}
+.event-detail-desc
+{
+  color:var(--muted);
+  line-height:1.6;
+  margin:12px 0 18px
+}
+.event-detail-meta
+{
+  display:grid;
+  gap:12px;
+  margin-bottom:20px
+}
+.event-detail-meta>div
+{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+  color:var(--muted);
+  font-size:13px
+}
+.event-detail-meta svg
+{
+  width:18px;
+  height:18px;
+  color:var(--green-700);
+  flex:0 0 auto
+}
+.event-detail-meta span>span
+{
+  display:block;
+  margin-top:2px
+}
+
 .ev-body h5
 {
   font-size:13.5px;
