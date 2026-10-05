@@ -7,8 +7,9 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open system.html",
-            "file": "c:\\Users\\Girlie Sinogbuhan\\Documents\\glyza mae\\3RD YEAR\\system\\system.html"
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:8080",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
