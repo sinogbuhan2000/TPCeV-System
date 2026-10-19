@@ -68,13 +68,16 @@ nav.main a:hover,nav.main a.active{color:var(--green-700);border-color:var(--gre
 
 /* ---------- Layout ---------- */
 .wrap{max-width:1280px;margin:auto;padding:24px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:-6px}
-.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:13px 15px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(11,61,30,.06)}
-.stat .ic{width:42px;height:42px;border-radius:10px;background:var(--green-100);color:var(--green-700);display:grid;place-items:center}
-.stat .ic svg{width:26px;height:26px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-top:-6px;width:100%;max-width:none;margin-left:auto;margin-right:auto}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:5px 12px;min-height:46px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(11,61,30,.06)}
+.stat .ic{width:26px;height:26px;flex:0 0 26px;border-radius:9px;background:var(--green-100);color:var(--green-700);display:grid;place-items:center}
+.stat .ic svg{width:17px;height:17px}
 .stat h4{font-size:12.5px;font-weight:500;color:var(--ink)}
-.stat .n{font-size:28px;font-weight:700;color:var(--green-900);line-height:1.15}
-.stat small{color:var(--muted);font-size:12px}
+.stat .n{font-size:20px;font-weight:700;color:var(--green-900);line-height:1.05}
+.stat small{display:none;color:var(--muted);font-size:10px}
+/* Responsive registration review in admin */
+.admin-registration-panel{padding:clamp(12px,2vw,22px);min-width:0}.registration-table-wrap{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}.registration-table{width:100%;min-width:720px;border-collapse:collapse}.registration-table th,.registration-table td{padding:12px 10px;vertical-align:middle}.registration-table .act{display:flex;gap:6px;flex-wrap:wrap}.registration-table .btn{white-space:nowrap}.registration-table td:first-child{min-width:170px}.registration-table td:nth-child(2){min-width:150px}.registration-table td:last-child{min-width:135px}.registration-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.registration-heading p{margin-top:4px}.registration-count{padding:9px 13px;border:1px solid var(--line);border-radius:10px;background:#f7faf7;color:var(--green-800);font-size:12px;font-weight:600}
+@media(max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stat{padding:6px 8px;gap:7px;min-height:44px}.stat .ic{width:24px;height:24px;flex-basis:24px}.stat h4{font-size:10px}.stat .n{font-size:18px}.registration-table{min-width:680px}.registration-count{width:100%;text-align:center}}
 .grid{display:grid;grid-template-columns:1fr 380px;gap:20px;margin-top:20px;align-items:start}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:0 1px 3px rgba(11,61,30,.06)}
 .panel-h{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
@@ -136,7 +139,19 @@ nav.main a:hover,nav.main a.active{color:var(--green-700);border-color:var(--gre
 .ann p{font-size:12.5px;color:#3a4a3f}
 
 /* ---------- Public page navigation ---------- */
-.public-page{display:none}.public-page.active{display:block}.public-pages{padding-top:24px}.page-title{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}.page-title small{font-size:10px;letter-spacing:1.2px;color:var(--green-600);font-weight:700}.page-title h2{font-size:24px;color:var(--green-900);margin:4px 0}.page-title p{font-size:12.5px;color:var(--muted)}.dashboard-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:20px;margin-top:20px}.event-page-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}.calendar-page-panel{max-width:1000px;margin:0 auto}.calendar-large .d{min-height:72px}.calendar-large .d .event-name{font-size:9px;padding:3px 4px}.register-page-shell{max-width:720px;margin:18px auto 10px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(24,61,39,.12);padding:32px 34px}.register-page-shell>small{display:block;text-align:center;letter-spacing:1.2px;color:var(--green-600);font-weight:700;font-size:10px}.register-page-shell h2{text-align:center;color:var(--green-900);font-size:24px;margin:6px 0}.register-page-shell>p{text-align:center;color:var(--muted);font-size:12.5px;max-width:520px;margin:0 auto 22px}.register-icon{width:52px;height:52px;border-radius:50%;background:var(--green-100);color:var(--green-800);display:grid;place-items:center;margin:0 auto 12px}.register-icon svg{width:24px;height:24px}.form-page-panel{max-width:760px;margin:0 auto}.drawer-foot p{font-size:11px;color:#a9c2af;margin:0}
+.public-page{display:none}.public-page.active{display:block}.public-pages{padding-top:24px}.page-title{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:18px}.page-title small{font-size:10px;letter-spacing:1.2px;color:var(--green-600);font-weight:700}.page-title h2{font-size:24px;color:var(--green-900);margin:4px 0}.page-title p{font-size:12.5px;color:var(--muted)}.dashboard-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:20px;margin-top:20px}.event-page-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.public-events-panel{padding:18px}
+.public-events-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.public-events-grid .ev{min-width:0;height:100%;box-shadow:0 3px 12px rgba(14,55,29,.06);transition:transform .18s ease,box-shadow .18s ease}
+.public-events-grid .ev:hover{transform:translateY(-3px);box-shadow:0 9px 22px rgba(14,55,29,.12)}
+.public-events-grid .ev-cover{height:170px!important;flex-shrink:0}
+.public-events-grid .ev-body{padding:14px!important;gap:9px}
+.public-events-grid .ev-body h5{font-size:15px;line-height:1.4;overflow-wrap:anywhere}
+.public-events-grid .event-view-btn{align-self:flex-start;margin-top:5px}
+.public-events-grid .soon{grid-column:1/-1;min-height:140px;display:grid;place-items:center;text-align:center;padding:28px;color:var(--muted);background:var(--green-50);border:1px dashed var(--line);border-radius:10px}
+@media(max-width:900px){.public-events-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
+@media(max-width:560px){.public-events-panel{padding:12px}.public-events-grid{grid-template-columns:minmax(0,1fr);gap:12px}.public-events-grid .ev-cover{height:190px!important}.event-page-tabs{align-items:stretch}.event-page-tabs .filter-btn{flex:1 1 calc(50% - 8px)}.month-filter-label{width:100%;justify-content:space-between}.month-filter-label select{flex:1;max-width:65%}}
+.calendar-page-panel{max-width:1000px;margin:0 auto}.calendar-large .d{min-height:72px}.calendar-large .d .event-name{font-size:9px;padding:3px 4px}.register-page-shell{max-width:720px;margin:18px auto 10px;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 45px rgba(24,61,39,.12);padding:32px 34px}.register-page-shell>small{display:block;text-align:center;letter-spacing:1.2px;color:var(--green-600);font-weight:700;font-size:10px}.register-page-shell h2{text-align:center;color:var(--green-900);font-size:24px;margin:6px 0}.register-page-shell>p{text-align:center;color:var(--muted);font-size:12.5px;max-width:520px;margin:0 auto 22px}.register-icon{width:52px;height:52px;border-radius:50%;background:var(--green-100);color:var(--green-800);display:grid;place-items:center;margin:0 auto 12px}.register-icon svg{width:24px;height:24px}.form-page-panel{max-width:760px;margin:0 auto}.drawer-foot p{font-size:11px;color:#a9c2af;margin:0}
 
 /* ---------- Footer ---------- */
 footer{background:var(--green-900);color:#e9f1ea;margin-top:28px}
@@ -230,13 +245,14 @@ td small{color:var(--muted)}
 .filter-btn.active,.filter-btn:hover{background:var(--green-100);border-color:#c9d9cd;color:var(--green-800)}
 .admin-form{max-width:900px}.form-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:20px}
 .form-card h4{font-size:14px;color:var(--green-900);margin-bottom:14px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px 18px}.form-grid .full{grid-column:1/-1}
-.form-label{display:block;font-size:11.5px;font-weight:600;margin:0 0 5px}.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
+.form-label{display:block;font-size:11.5px;font-weight:600;margin:0 0 5px}.form-help{display:block;color:var(--muted);font-size:11px;margin-top:5px;line-height:1.45}.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:18px}
 .notice{padding:11px 13px;border-radius:8px;background:var(--green-50);font-size:12px;color:#314438;margin-bottom:14px}
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.gallery-item{border:1px solid var(--line);border-radius:9px;overflow:hidden;background:#fff}.gallery-thumb{height:120px;background:linear-gradient(135deg,#dce9df,#a8c8b0);display:grid;place-items:center;color:var(--green-800)}.gallery-thumb svg{width:36px;height:36px}.gallery-item .caption{padding:10px;font-size:11.5px}.comment-card{border:1px solid var(--line);border-radius:9px;padding:14px;background:#fff}.comment-card + .comment-card{margin-top:10px}.comment-meta{display:flex;justify-content:space-between;gap:12px;font-size:11px;color:var(--muted);margin-bottom:6px}.comment-card p{font-size:12.5px}.settings-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.setting-row{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px}.setting-row:last-child{border-bottom:0}.switch{position:relative;width:42px;height:24px}.switch input{opacity:0;width:0;height:0}.slider-switch{position:absolute;inset:0;background:#ccd5ce;border-radius:20px;cursor:pointer}.slider-switch:before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.18s}.switch input:checked + .slider-switch{background:var(--green-700)}.switch input:checked + .slider-switch:before{transform:translateX(18px)}
 @media(max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr)}.settings-grid{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}}
 @media(max-width:767px){.public-drawer{transform:translateX(-105%)}.public-drawer.open{transform:translateX(0)}.admin .side{transform:translateX(-105%)}.admin .side.open{transform:translateX(0)}}
 @media(max-width:560px){.gallery-grid{grid-template-columns:1fr 1fr}.public-drawer{width:290px}}
 
+.calendar-controls{gap:10px;flex-wrap:wrap}.calendar-controls label{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--muted);font-weight:600}.calendar-controls select{max-width:130px;padding:7px 9px;border:1px solid var(--line);border-radius:7px;background:#fff;color:var(--ink);font:inherit;font-size:12px}.calendar-controls #pubCalTitle,.calendar-controls #admCalTitle{font-weight:700;color:var(--green-900);margin-right:auto}@media(max-width:560px){.calendar-controls{justify-content:space-between;gap:7px}.calendar-controls label{font-size:10px}.calendar-controls select{max-width:105px;padding:6px}.calendar-controls #pubCalTitle,.calendar-controls #admCalTitle{width:100%;order:-1;text-align:center;margin:0}}
 /* ---------- Schedule / approval ---------- */
 .schedule-ok{margin-top:8px;padding:8px 10px;border-radius:7px;background:var(--green-50);color:var(--green-800);font-size:11.5px}
 .schedule-warning{margin-top:8px;padding:9px 10px;border-radius:7px;background:#fff4df;color:#8a5a00;border:1px solid #f1d69a;font-size:11.5px}
@@ -287,7 +303,74 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
   .who div{display:none}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-.dashboard-only-hidden{display:none}.event-detail-panel{padding:0;overflow:hidden}.event-detail-cover{min-height:220px;display:grid;place-items:center;color:#fff}.event-detail-cover svg{width:80px;height:80px}.event-detail-content{padding:24px}.event-detail-content h3{font-size:24px;color:var(--green-900);margin-bottom:8px}.event-detail-content p{color:var(--muted);font-size:13px;margin-bottom:20px}.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.detail-grid>div{border:1px solid var(--line);border-radius:8px;padding:12px}.detail-grid b{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}.detail-grid span{font-size:12px;font-weight:600;color:var(--green-900)}.event-view-btn{width:100%}.dashboard-ev .ev-cover{height:118px}.dashboard-ev .ev-body{min-height:170px}.dashboard-ev .ev-body h5{font-size:14px;min-height:40px}.dashboard-ev .ev-body .badge{margin-top:2px}.dashboard-ev .event-view-btn svg{width:17px;height:17px}@media(max-width:860px){.detail-grid{grid-template-columns:1fr 1fr}.dashboard-grid{grid-template-columns:1fr}.register-page-shell{padding:24px 18px}.hero-in{padding:34px 20px}.hero h1{font-size:28px}.topbar-in{padding:10px 16px}.brand b{font-size:13px}.brand small{font-size:10px}}@media(max-width:560px){.topbar .admin-btn{display:inline-flex;width:38px;height:38px;padding:0;justify-content:center}.topbar .admin-btn svg{width:18px;height:18px}.hero{min-height:230px}.hero-in{padding:28px 18px}.hero h1{font-size:24px}.hero p{font-size:12px}.wrap{padding:16px}.stats{gap:10px}.stat{padding:11px 12px}.stat .ic{width:36px;height:36px}.stat .n{font-size:20px}.stat h4{font-size:10.5px}.stat small{font-size:10px}.calendar-large .d{min-height:58px}.calendar-large .d .event-name{font-size:7px}.register-page-shell h2{font-size:21px}.form-grid{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}.event-detail-content h3{font-size:20px}.drawer-links a{padding:12px 12px}.drawer-group>a[data-public-filter]{padding-left:40px!important;min-height:40px;font-size:12px!important}}</style>
+.dashboard-only-hidden{display:none}.event-detail-panel{padding:0;overflow:hidden}.event-detail-cover{min-height:220px;display:grid;place-items:center;color:#fff}.event-detail-cover svg{width:80px;height:80px}.event-detail-content{padding:24px}.event-detail-content h3{font-size:24px;color:var(--green-900);margin-bottom:8px}.event-detail-content p{color:var(--muted);font-size:13px;margin-bottom:20px}.detail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.detail-grid>div{border:1px solid var(--line);border-radius:8px;padding:12px}.detail-grid b{display:block;font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}.detail-grid span{font-size:12px;font-weight:600;color:var(--green-900)}.event-view-btn{width:100%}.dashboard-ev .ev-cover{height:118px}.dashboard-ev .ev-body{min-height:76px}.dashboard-ev .ev-body h5{font-size:14px;min-height:40px}.dashboard-ev .ev-body .badge{margin-top:2px}.dashboard-ev .event-view-btn svg{width:17px;height:17px}@media(max-width:860px){.detail-grid{grid-template-columns:1fr 1fr}.dashboard-grid{grid-template-columns:1fr}.register-page-shell{padding:24px 18px}.hero-in{padding:34px 20px}.hero h1{font-size:28px}.topbar-in{padding:10px 16px}.brand b{font-size:13px}.brand small{font-size:10px}}@media(max-width:560px){.topbar .admin-btn{display:inline-flex;width:38px;height:38px;padding:0;justify-content:center}.topbar .admin-btn svg{width:18px;height:18px}.hero{min-height:230px}.hero-in{padding:28px 18px}.hero h1{font-size:24px}.hero p{font-size:12px}.wrap{padding:16px}.stats{gap:10px}.stat{padding:6px 10px;min-height:52px}.stat .ic{width:27px;height:27px;flex-basis:27px}.stat .n{font-size:19px}.stat h4{font-size:10.5px}.stat small{font-size:10px}.calendar-large .d{min-height:58px}.calendar-large .d .event-name{font-size:7px}.register-page-shell h2{font-size:21px}.form-grid{grid-template-columns:1fr}.detail-grid{grid-template-columns:1fr}.event-detail-content h3{font-size:20px}.drawer-links a{padding:12px 12px}.drawer-group>a[data-public-filter]{padding-left:40px!important;min-height:40px;font-size:12px!important}}
+/* Responsive corrections for public and admin dashboards */
+@media (max-width: 860px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .a-grid{grid-template-columns:minmax(0,1fr);gap:14px}
+  .a-body{padding:16px}
+  .a-top{padding:10px 14px;gap:10px}
+  .panel{min-width:0;padding:clamp(12px,2vw,20px)}
+  .panel-h{gap:8px;flex-wrap:wrap}
+  .feed li{min-width:0;overflow-wrap:anywhere}
+  .admin .side{transform:translateX(-105%);width:min(290px,86vw);z-index:45}
+  .admin .side.open{transform:translateX(0)}
+  .admin .side:hover,.admin .side:focus-within{transform:translateX(-105%)}
+  .admin .side.open:hover,.admin .side.open:focus-within{transform:translateX(0)}
+  .admin .side:after{display:none}
+  .admin-drawer-backdrop{position:fixed;inset:0;background:rgba(9,32,18,.48);z-index:44}
+  .admin .side .logout{padding-bottom:env(safe-area-inset-bottom)}
+  .ev-row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .event-page-tabs{flex-wrap:wrap}
+  .calendar-large .d{min-height:50px}
+}
+@media (max-width:560px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px}
+  .stat{padding:7px;gap:6px;min-height:54px;min-width:0}
+  .stat .ic{width:23px;height:23px;flex:0 0 23px}
+  .stat .ic svg{width:15px;height:15px}
+  .stat h4{font-size:9px;line-height:1.25;overflow-wrap:anywhere}
+  .stat .n{font-size:17px}
+  .a-body{padding:10px}
+  .a-top h2{font-size:15px}
+  .who{gap:6px}
+  .who .av{width:30px;height:30px}
+  .a-welcome h3{font-size:18px}
+  .a-welcome p{font-size:11px}
+  .a-welcome .btn{width:100%;justify-content:center}
+  .a-grid{grid-template-columns:minmax(0,1fr)}
+  .a-grid>div{min-width:0}
+  .pending{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .pending>div{min-width:0;padding:9px}
+  .pending span{font-size:10px;overflow-wrap:anywhere}
+  .feed{gap:10px}
+  .feed li{font-size:11px;gap:8px}
+  .feed .ic{width:28px;height:28px;flex-basis:28px}
+  .cal{font-size:10px}
+  .cal .d{min-height:38px}
+  .ev-row{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .ev-cover{height:100px!important}
+  .ev-body{padding:9px!important}
+  .ev-body h5{font-size:11px!important;overflow-wrap:anywhere}
+  .event-view-btn{font-size:10px;padding:8px 5px;justify-content:center}
+  .event-view-btn svg{display:none}
+  .register-page-shell{padding:16px 12px}
+  .admin-event-form-shell{padding:14px!important}
+  .tbl-wrap{max-width:100%;overflow-x:auto}
+  .panel-h h3{font-size:12px}
+  .admin .side{width:min(280px,86vw)}
+}
+
+
+/* Latest responsive polish */
+.ev-row{gap:12px!important}.dashboard-preview .slider{padding-inline:8px!important}.dashboard-preview .ev-row{padding-inline:4px!important}
+#contact .contact-grid,#contact .contact-items{gap:12px!important}
+.reg-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.reg-actions .btn{min-height:38px;padding:9px 14px;border-radius:8px;font-weight:700}.btn-reject{background:#fff1f1!important;color:#a61b1b!important;border:1px solid #efb4b4!important}.letter-view{display:inline-flex;align-items:center;gap:5px;color:var(--green-800);font-weight:700;text-decoration:underline;overflow-wrap:anywhere}.letter-unavailable{font-size:12px;overflow-wrap:anywhere}.letter-unavailable small{display:block;color:#9a5a00}.reviewed-label{font-size:11px;font-weight:700;color:var(--muted)}
+/* Announcements use a wide, landscape-style horizontal layout. */
+.dashboard-announcement .ann{display:flex;align-items:center;gap:18px;min-height:130px;padding:22px 26px}.dashboard-announcement .ann #pubAnn{flex:1;min-width:0}.dashboard-announcement .ann #pubAnn p{max-width:100%;line-height:1.65}
+@media(max-width:700px){.dashboard-preview .slider{padding-inline:0!important}.dashboard-preview .ev-row{gap:8px!important;padding:0!important}.dashboard-preview .dashboard-ev{margin:0!important}.dashboard-about,.dashboard-preview,.dashboard-announcement{min-width:0}.dashboard-announcement .ann{align-items:flex-start;gap:12px;padding:16px;min-height:110px}.registration-table{min-width:0!important;width:100%!important;border-collapse:separate;border-spacing:0 10px}.registration-table-wrap{overflow:visible;width:100%}.registration-table thead{display:none}.registration-table,.registration-table tbody{display:block;width:100%;box-sizing:border-box}.registration-table tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 12px;border:1px solid var(--line);border-radius:12px;padding:10px;margin:0 0 12px;background:#fff;min-width:0;width:100%;box-sizing:border-box}.registration-table td{display:block;border:0!important;padding:8px 5px!important;min-width:0!important;width:auto!important;overflow-wrap:anywhere;white-space:normal;box-sizing:border-box}.registration-table td::before{content:attr(data-label);display:block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:800;margin-bottom:3px}.registration-table td[data-label="Action"]{grid-column:1/-1;padding-top:12px!important;border-top:1px solid var(--line)!important;margin-top:5px}.reg-actions{display:flex;flex-direction:row;width:100%;gap:8px}.reg-actions .btn{display:block;flex:1;width:auto;min-height:42px;white-space:normal}.registration-heading{align-items:flex-start}.registration-count{width:100%;text-align:center}.admin-registration-panel{width:100%;max-width:100%;overflow:hidden}.admin-participants{margin-top:7px;overflow-wrap:anywhere}.dashboard-preview .ev-row>*{min-width:0}}
+@media(max-width:380px){.reg-actions{grid-template-columns:1fr}.dashboard-announcement .ann{padding:12px}}
+</style>
 </head>
 <body>
 
@@ -345,7 +428,7 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
         <a href="#about">ABOUT US</a>
         <a href="#contact">CONTACT</a>
       </nav>
-      <button class="btn btn-primary admin-btn" id="openLogin"><svg class="i"><use href="#i-user"/></svg><span>ADMIN PANEL</span></button>
+      <button class="btn btn-primary admin-btn" id="openLogin" onclick="if(!window.tpcOpenAdminLogin){document.getElementById('loginOverlay').classList.remove('hidden');document.getElementById('loginOverlay').style.display='grid'}"><svg class="i"><use href="#i-user"/></svg><span>ADMIN PANEL</span></button>
       <button class="menu-btn" id="menuBtn" aria-label="Menu"><svg class="i"><use href="#i-menu"/></svg></button>
     </div>
   </header>
@@ -360,12 +443,9 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
       <button class="drawer-close" id="drawerClose" aria-label="Close menu"><svg class="i"><use href="#i-menu"/></svg></button>
     </div>
     <div class="drawer-links">
-      <a href="#top" data-drawer-link="top"><svg class="i"><use href="#i-home"/></svg> <span>Dashboard</span></a>
+      <a href="#top" data-drawer-link="dashboard"><svg class="i"><use href="#i-home"/></svg> <span>Dashboard</span></a>
       <div class="drawer-group">
         <a href="#events" data-drawer-link="events"><svg class="i"><use href="#i-cal"/></svg> <span>Events</span></a>
-        <a href="#events" data-public-filter="upcoming" style="padding-left:46px;font-size:12px">+ Upcoming Events</a>
-        <a href="#events" data-public-filter="ongoing" style="padding-left:46px;font-size:12px">+ Ongoing Events</a>
-        <a href="#events" data-public-filter="completed" style="padding-left:46px;font-size:12px">+ Past Events</a>
       </div>
       <a href="#calendar" data-drawer-link="calendar"><svg class="i"><use href="#i-cal"/></svg> <span>Calendar</span></a>
       <a href="#announcements" data-drawer-link="announcements"><svg class="i"><use href="#i-mega"/></svg> <span>Announcements</span></a>
@@ -404,7 +484,7 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
       <small>WELCOME TO TPC</small>
       <h1>Event Management System</h1>
       <p>Stay updated with all the events, activities, and announcements happening around our college.</p>
-      <a class="btn btn-primary" href="#events"><svg class="i"><use href="#i-cal"/></svg> VIEW UPCOMING EVENTS</a>
+      <a class="btn btn-primary" href="#events" id="viewUpcomingEvents"><svg class="i"><use href="#i-cal"/></svg> VIEW UPCOMING EVENTS</a>
     </div>
   </section>
 
@@ -428,11 +508,13 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
     <section class="public-page" data-public-page="events" id="eventsPage">
       <div class="page-title"><div><small>PUBLIC EVENTS</small><h2 id="publicEventsTitle">Upcoming Events</h2><p>Browse events by status and open the calendar separately from this page.</p></div></div>
       <div class="event-page-tabs">
-        <button class="filter-btn active" data-public-filter="upcoming">Upcoming Events</button>
+        <button class="filter-btn active" data-public-filter="all">All Events</button>
+         <button class="filter-btn" data-public-filter="upcoming">Upcoming Events</button>
         <button class="filter-btn" data-public-filter="ongoing">Ongoing Events</button>
         <button class="filter-btn" data-public-filter="completed">Past Events</button>
+        <label class="month-filter-label" style="display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted)">Filter by month <select id="publicEventMonth" style="padding:8px;border:1px solid var(--line);border-radius:7px;background:#fff"><option value="all">All months</option></select></label>
       </div>
-      <section class="panel"><div class="slider"><button class="arrow l" id="pagePrevEv" aria-label="Previous"><svg class="i"><use href="#i-left"/></svg></button><div class="ev-row" id="publicEventsPageList"></div><button class="arrow r" id="pageNextEv" aria-label="Next"><svg class="i"><use href="#i-right"/></svg></button></div></section>
+      <section class="panel public-events-panel"><div class="public-events-grid" id="publicEventsPageList" aria-live="polite"></div></section>
     </section>
 
     <section class="public-page" data-public-page="about" id="aboutPage">
@@ -448,7 +530,7 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
     <section class="public-page" data-public-page="calendar" id="calendarPage">
       <div class="page-title"><div><small>PUBLIC CALENDAR</small><h2>Event Calendar</h2><p>Events are shown by name on their scheduled dates.</p></div></div>
       <section class="panel calendar-page-panel">
-        <div class="cal-h"><button data-cal="-1" data-t="pub" aria-label="Previous month"><svg class="i"><use href="#i-left"/></svg></button><span id="pubCalTitle"></span><button data-cal="1" data-t="pub" aria-label="Next month"><svg class="i"><use href="#i-right"/></svg></button></div>
+        <div class="cal-h calendar-controls"><button data-cal="-1" data-t="pub" aria-label="Previous month"><svg class="i"><use href="#i-left"/></svg></button><span id="pubCalTitle"></span><label>Month <select data-cal-month="pub" aria-label="Choose month"></select></label><label>Year <select data-cal-year="pub" aria-label="Choose year"></select></label><button data-cal="1" data-t="pub" aria-label="Next month"><svg class="i"><use href="#i-right"/></svg></button></div>
         <div class="cal calendar-large" id="pubCal"></div>
       </section>
     </section>
@@ -463,17 +545,20 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
         <div class="register-icon"><svg class="i"><use href="#i-doc"/></svg></div>
         <small>EVENT REGISTRATION</small>
         <h2>Register for an Event</h2>
-        <p>Submit your registration request below. The schedule is checked as you fill in the form, and your request will be reviewed by the Events Office.</p>
+        <p>Submit a proposed event with its date, venue, and time. The Events Office will review it. It will not appear on the public calendar until it is approved, and conflicting schedules will be flagged.</p>
         <form id="publicRegForm">
           <div class="form-grid">
             <div><label class="form-label">Name *</label><input type="text" name="name" required maxlength="80"></div>
             <div><label class="form-label">Email *</label><input type="email" name="email" required maxlength="100"></div>
-            <div class="full"><label class="form-label">Event Name *</label><select name="event" id="publicRegEvent" required></select></div>
-            <div><label class="form-label">Date</label><input type="text" id="publicRegDate" readonly></div>
-            <div><label class="form-label">Duration Time</label><input type="text" id="publicRegDuration" readonly></div>
+            <div class="full"><label class="form-label">Proposed Event Name *</label><input type="text" name="event" id="publicRegEvent" placeholder="Enter your proposed event name" autocomplete="off" maxlength="100" required><small class="form-help">You can enter a new event name. We will check its proposed schedule against approved events.</small></div>
+            <div><label class="form-label">Start Date *</label><input type="date" id="publicRegStartDate" name="preferredStartDate" required></div>
+            <div><label class="form-label">End Date *</label><input type="date" id="publicRegEndDate" name="preferredEndDate" required></div>
+            <div><label class="form-label">Start Time *</label><input type="time" id="publicRegStartTime" name="preferredStartTime" required></div>
+            <div><label class="form-label">End Time *</label><input type="time" id="publicRegEndTime" name="preferredEndTime" required></div>
+            <div><label class="form-label">Venue *</label><input type="text" id="publicRegVenue" name="preferredVenue" placeholder="Enter proposed venue" maxlength="100" required></div>
+            <div><label class="form-label">Participants *</label><textarea name="participants" id="publicRegParticipants" placeholder="Enter the names of the participants" rows="2" maxlength="1000" required></textarea><small class="form-help">Enter who will participate (names or group/organization).</small></div>
             <div class="full schedule-ok" id="registrationScheduleCheck"></div>
-            <div><label class="form-label">Participants File *</label><input type="file" name="participantsFile" accept=".pdf,.doc,.docx,.xls,.xlsx" required></div>
-            <div><label class="form-label">Approved Letter *</label><input type="file" name="approvedLetter" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required></div>
+            <div class="full"><label class="form-label">Approved Letter *</label><input type="file" name="approvedLetter" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required></div>
           </div>
           <div class="form-actions"><button class="btn btn-primary" type="submit">Submit Registration</button></div>
         </form>
@@ -510,7 +595,7 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
         <a href="#" aria-label="Facebook"><svg class="i"><use href="#i-fb"/></svg></a>
         <a href="#" aria-label="Messenger"><svg class="i"><use href="#i-msg"/></svg></a>
         <a href="#" aria-label="Email"><svg class="i"><use href="#i-mail"/></svg></a></div></div>
-      <div class="copy">© 2025 Talibon Polytechnic College<br>All rights reserved.</div>
+      <div class="copy">© <span id="copyrightYear">2026</span> Talibon Polytechnic College<br>All rights reserved.</div>
     </div>
   </footer>
 </div>
@@ -557,7 +642,7 @@ textarea:focus,select:focus,input[type=date]:focus{outline:2px solid var(--green
       <div class="err" id="loginErr" role="alert"></div>
       <div class="row">
         <button class="btn btn-ghost" id="cancelLogin">Cancel</button>
-        <button class="btn btn-primary" id="doLogin">Log in</button>
+        <button class="btn btn-primary" id="doLogin" onclick="if(!window.tpcTryAdminLogin){var u=document.getElementById('user').value.trim(),p=document.getElementById('pass').value;if(u==='admin'&&p==='admin123'){document.getElementById('loginOverlay').classList.add('hidden');document.getElementById('publicView').classList.add('hidden');document.getElementById('adminView').classList.remove('hidden')}else{document.getElementById('loginErr').textContent='Incorrect username or password.'}}">Log in</button>
       </div>
       <div class="hint">Demo account: <b>admin</b> / <b>admin123</b></div>
     </div>
@@ -590,10 +675,13 @@ const EVENTS = [
   {id:7,title:"Nutrition Month Forum",desc:"Health talks and cooking demonstrations.",start:"2025-05-29",end:"2025-05-29",place:"TPC Gymnasium",aud:"Open to all students",status:"ongoing",approval:"approved",startTime:"08:00",endTime:"17:00",icon:"leaf",color:["#3b8a55","#1a4a2c"],regs:58},
   {id:8,title:"Enrollment Orientation",desc:"Orientation for incoming first-year students.",start:"2025-05-02",end:"2025-05-02",place:"TPC Gymnasium",aud:"New students",status:"completed",approval:"approved",startTime:"08:00",endTime:"17:00",icon:"mic",color:["#8a6a10","#4a3908"],regs:140},
   {id:9,title:"Tree Planting Day",desc:"Planting native trees around the campus.",start:"2025-05-26",end:"2025-05-26",place:"TPC Campus",aud:"Volunteers only",status:"completed",approval:"approved",startTime:"08:00",endTime:"17:00",icon:"tree",color:["#2f7a3a","#154a1f"],regs:63},
-  {id:10,title:"Recognition Program",desc:"Awarding outstanding students and faculty.",start:"2025-05-31",end:"2025-05-31",place:"TPC Covered Court",aud:"Invited guests",status:"completed",approval:"approved",startTime:"08:00",endTime:"17:00",icon:"cap",color:["#166534","#0b3d1e"],regs:95}
+  {id:10,title:"Recognition Program",desc:"Awarding outstanding students and faculty.",start:"2025-05-31",end:"2025-05-31",place:"TPC Covered Court",aud:"Invited guests",status:"completed",approval:"approved",startTime:"08:00",endTime:"17:00",icon:"cap",color:["#166534","#0b3d1e"],regs:95},
+  {id:11,title:"Tech Innovation Expo 2026",desc:"Explore student technology projects, software demonstrations, and creative digital solutions.",start:"2026-11-05",end:"2026-11-06",place:"TPC Audio Visual Room",aud:"TPC students, faculty, and guests",status:"upcoming",approval:"approved",startTime:"09:00",endTime:"16:00",icon:"chip",color:["#1e3fae","#0b1b5e"],regs:0},
+  {id:12,title:"BSIS Week 2026",desc:"A week of information systems challenges, team activities, and student showcases.",start:"2026-11-10",end:"2026-11-12",place:"TPC Campus",aud:"BSIS students and faculty",status:"upcoming",approval:"approved",startTime:"08:30",endTime:"17:00",icon:"users",color:["#166534","#0b3d1e"],regs:0},
+  {id:13,title:"College Days 2026",desc:"A week of student performances, competitions, sports, and campus-wide celebrations.",start:"2026-11-23",end:"2026-11-27",place:"Talibon Polytechnic College Campus",aud:"TPC students, faculty, and staff",status:"upcoming",approval:"approved",startTime:"08:00",endTime:"17:00",icon:"cap",color:["#166534","#0b3d1e"],image:"https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80",regs:0},
+  {id:14,title:"Career and Internship Fair 2026",desc:"Meet employers, learn about internship opportunities, and prepare for your career journey.",start:"2026-12-03",end:"2026-12-04",place:"TPC Covered Court",aud:"Graduating students and interested learners",status:"upcoming",approval:"approved",startTime:"09:00",endTime:"15:30",icon:"mic",color:["#6d3aa8","#361b5c"],regs:0},
+  {id:15,title:"Community Outreach Day 2026",desc:"Students and staff join together for a community service and outreach activity.",start:"2026-12-12",end:"2026-12-12",place:"Talibon, Bohol",aud:"Registered volunteers",status:"upcoming",approval:"approved",startTime:"08:00",endTime:"12:00",icon:"tree",color:["#2f7a3a","#154a1f"],regs:0}
 ];
-// Add filler so totals look realistic (24 total, 8 upcoming, 3 ongoing, 13 completed)
-const EXTRA = {upcoming:4,ongoing:0,completed:10};
 const ANNOUNCEMENTS = [
   {t:"Announcement",m:"For more information about the events, please visit the respective offices or contact the organizers. Stay tuned and be part of our upcoming activities!",d:"Posted May 27, 2025"},
   {t:"IT Week schedule released",m:"The full program for IT Week 2025 is now available at the Audio Visual Room.",d:"Posted May 26, 2025"},
@@ -603,6 +691,16 @@ const REGISTRATIONS = [
   {id:1,name:"Juan Dela Cruz",idno:"2025-00123",email:"juan@example.com",eventId:1,status:"pending",date:"May 29, 2025"},
   {id:2,name:"Maria Santos",idno:"2025-00456",email:"maria@example.com",eventId:2,status:"pending",date:"May 29, 2025"}
 ];
+const COMMENTS = [
+  {id:1,n:"Student A",d:"May 28, 2025",t:"Looking forward to IT Week!",status:"approved"},
+  {id:2,n:"Student B",d:"May 27, 2025",t:"Will there be registration on the event day?",status:"approved"},
+  {id:3,n:"Faculty Member",d:"May 26, 2025",t:"Thank you for keeping the schedule updated.",status:"approved"}
+];
+const FEEDBACK = [
+  {id:1,n:"Student A",rating:5,t:"The event calendar is easy to use.",d:"May 28, 2025"},
+  {id:2,n:"Student C",rating:4,t:"Please add more photos after each event.",d:"May 27, 2025"},
+  {id:3,n:"Faculty",rating:5,t:"Announcements are clear and timely.",d:"May 26, 2025"}
+];
 const ACTIVITY = [
   {ic:"users",t:"12 new registrations for Intramurals 2025",d:"Today, 9:20 AM"},
   {ic:"comment",t:"New comment on IT Week 2025",d:"Today, 8:45 AM"},
@@ -611,10 +709,12 @@ const ACTIVITY = [
   {ic:"img",t:"8 photos added to Gallery",d:"May 26, 2025"}
 ];
 const ADMIN = {user:"admin",pass:"admin123"};
-const TODAY = new Date(2025,4,29); // matches reference (May 29, 2025). Use `new Date()` for live date.
+const TODAY = new Date();
+TODAY.setHours(0,0,0,0);
 
 /* ============ HELPERS ============ */
 const $ = s => document.querySelector(s);
+const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;", "'":"&#39;"}[ch]));
 const MONTHS = ["January","February","March","April","May","June","July","August","September","October","November","December"];
 const MSHORT = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
 const pd = s => { const [y,m,d] = s.split("-").map(Number); return new Date(y,m-1,d); };
@@ -626,13 +726,13 @@ const fmtRange = e => {
 const icon = (n,cls="i") => `<svg class="${cls}"><use href="#i-${n}"/></svg>`;
 const fmtTime = t => { if(!t) return ""; const [hh,mm]=t.split(":").map(Number); const d=new Date(2000,0,1,hh,mm); return d.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"}); };
 const durationText = e => { if(!e) return ""; const days=Math.round((pd(e.end)-pd(e.start))/86400000)+1; const time=(e.startTime&&e.endTime)?`${fmtTime(e.startTime)} - ${fmtTime(e.endTime)}`:""; return days===1?(time||"1 day"):`${days} days${time?` · ${time}`:""}`; };
-const approvedEvents = () => EVENTS.filter(e=>e.approval!=='rejected' && (e.approval||'approved')==='approved');
+const approvedEvents = () => EVENTS.filter(e=>e.approval==="approved"||(!e.approval&&e.status!=="pending"));
 function rangesOverlap(a,b){ if(!a||!b) return false; const as=new Date(`${a.start}T${a.startTime||"00:00"}`).getTime(), ae=new Date(`${a.end}T${a.endTime||"23:59"}`).getTime(), bs=new Date(`${b.start}T${b.startTime||"00:00"}`).getTime(), be=new Date(`${b.end}T${b.endTime||"23:59"}`).getTime(); return as < be && bs < ae; }
 function findEventConflicts(candidate, excludeId=null){ return approvedEvents().filter(e=>Number(e.id)!==Number(excludeId) && rangesOverlap(candidate,e)); }
 
 const counts = () => {
-  const c = {upcoming:EXTRA.upcoming,ongoing:EXTRA.ongoing,completed:EXTRA.completed};
-  EVENTS.filter(e=>(e.approval||"approved")==="approved").forEach(e=>c[e.status]++);
+  const c = {upcoming:0,ongoing:0,completed:0};
+  approvedEvents().forEach(e=>{ if(Object.prototype.hasOwnProperty.call(c,e.status)) c[e.status]++; });
   c.total = c.upcoming+c.ongoing+c.completed; return c;
 };
 function toast(msg){
@@ -640,50 +740,120 @@ function toast(msg){
   setTimeout(()=>t.remove(),2200);
 }
 const store = {
-  get(k){try{return sessionStorage.getItem(k)}catch(e){return null}},
-  set(k,v){try{sessionStorage.setItem(k,v)}catch(e){}},
-  del(k){try{sessionStorage.removeItem(k)}catch(e){}}
+  get(k){try{return localStorage.getItem(k)}catch(e){return null}},
+  set(k,v){try{localStorage.setItem(k,v)}catch(e){}},
+  del(k){try{localStorage.removeItem(k)}catch(e){}}
 };
+// Keep uploaded letters in IndexedDB so they do not fill localStorage and disappear on save.
+const LETTER_DB_NAME = "tpcev_uploaded_letters";
+function letterDb(){return new Promise((resolve,reject)=>{if(!window.indexedDB){reject(new Error("File storage is unavailable in this browser."));return;}const req=indexedDB.open(LETTER_DB_NAME,1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains("letters"))req.result.createObjectStore("letters");};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error("Could not open file storage."));});}
+async function saveLetter(key,data){const db=await letterDb();return new Promise((resolve,reject)=>{const tx=db.transaction("letters","readwrite");tx.objectStore("letters").put(data,key);tx.oncomplete=()=>{db.close();resolve();};tx.onerror=()=>{db.close();reject(tx.error||new Error("Could not save the uploaded file."));};});}
+async function readLetter(key){const db=await letterDb();return new Promise((resolve,reject)=>{const tx=db.transaction("letters","readonly");const req=tx.objectStore("letters").get(key);req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error||new Error("Could not read the uploaded file."));tx.oncomplete=()=>db.close();});}
 
 /* ============ SHARED COMPONENTS ============ */
 function statCards(){
   const c = counts();
   return [
-    ["cal","Total Events",c.total,"All scheduled events"],
-    ["calclock","Upcoming Events",c.upcoming,"Happening soon"],
-    ["users","Ongoing Events",c.ongoing,"Currently ongoing"],
-    ["check","Completed Events",c.completed,"Successfully concluded"]
-  ].map(([i,t,n,s])=>`<div class="stat"><div class="ic">${icon(i)}</div><div><h4>${t}</h4><div class="n">${n}</div><small>${s}</small></div></div>`).join("");
+    ["cal","Total Events",c.total],
+    ["calclock","Upcoming Events",c.upcoming],
+    ["users","Ongoing Events",c.ongoing],
+    ["check","Completed Events",c.completed]
+  ].map(([i,t,n])=>`<div class="stat"><div class="ic">${icon(i)}</div><div><h4>${t}</h4><div class="n">${n}</div></div></div>`).join("");
 }
+const DEFAULT_EVENT_IMAGE = "https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=1200&q=80";
 function eventCard(e){
-  return `<article class="ev">
-    <div class="ev-cover" style="background:linear-gradient(135deg,${e.color[0]},${e.color[1]})">
-      ${icon(e.icon)}
-      <div class="ev-date"><span>${MSHORT[pd(e.start).getMonth()]}</span><b>${pd(e.start).getDate()}</b><i>${pd(e.start).getFullYear()}</i></div>
-    </div>
-    <div class="ev-body">
-      <h5>${e.title}</h5><p>${e.desc}</p>
-      <div class="meta">${icon("clock")}${fmtRange(e)}</div>
-      <div class="meta">${icon("calclock")}${durationText(e)}</div>
-      <div class="meta">${icon("pin")}${e.place}</div>
-      <div class="meta">${icon("users")}${e.aud}</div>
-      <span class="badge b-${e.status}">${e.status.toUpperCase()}</span>
-      <button class="btn btn-ghost event-view-btn" data-event-view-public="${e.id}" style="margin-top:6px;justify-content:center">VIEW EVENT</button>
-    </div></article>`;
+  const image=getEventImage(e);
+  const colors=e.color||["#166534","#0b3d1e"];
+  return `<article class="ev event-summary-card" data-event-view-public="${e.id}" tabindex="0" aria-label="View details for ${escapeHTML(e.title)}" style="cursor:pointer">
+    <div class="ev-cover" style="background:linear-gradient(135deg,${colors[0]},${colors[1]});height:150px"><img src="${escapeHTML(image)}" alt="${escapeHTML(e.title)} event cover" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"><div class="ev-date"><span>${MSHORT[pd(e.start).getMonth()]}</span><b>${pd(e.start).getDate()}</b><i>${pd(e.start).getFullYear()}</i></div></div>
+    <div class="ev-body" style="min-height:0;padding:14px"><h5>${escapeHTML(e.title)}</h5><div class="meta">${icon("pin")}${escapeHTML(e.place)}</div><span class="badge b-${escapeHTML(e.status)}">${escapeHTML((e.status||"upcoming").toUpperCase())}</span><button type="button" class="btn btn-primary event-view-btn" data-event-view-public="${e.id}">View Event ${icon("right")}</button></div>
+  </article>`;
 }
 function dashboardEventCard(e){
-  return `<article class="ev dashboard-ev">
-    <div class="ev-cover" style="background:linear-gradient(135deg,${e.color[0]},${e.color[1]})">${icon(e.icon)}<div class="ev-date"><span>${MSHORT[pd(e.start).getMonth()]}</span><b>${pd(e.start).getDate()}</b><i>${pd(e.start).getFullYear()}</i></div></div>
-    <div class="ev-body"><h5>${e.title}</h5><div class="meta">${icon("clock")}${fmtRange(e)}</div><span class="badge b-${e.status}">${e.status.toUpperCase()}</span><button class="btn btn-primary event-view-btn" data-event-view-public="${e.id}" style="margin-top:6px;justify-content:center">${icon("eye")} View Event</button></div>
+  const image=getEventImage(e);
+  const colors=e.color||["#166534","#0b3d1e"];
+  return `<article class="ev dashboard-ev event-summary-card" data-event-view-public="${e.id}" tabindex="0" aria-label="View details for ${escapeHTML(e.title)}" style="cursor:pointer">
+    <div class="ev-cover" style="background:linear-gradient(135deg,${colors[0]},${colors[1]});height:118px"><img src="${escapeHTML(image)}" alt="${escapeHTML(e.title)} event cover" loading="lazy" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"><div class="ev-date"><span>${MSHORT[pd(e.start).getMonth()]}</span><b>${pd(e.start).getDate()}</b><i>${pd(e.start).getFullYear()}</i></div></div>
+    <div class="ev-body" style="min-height:0;padding:10px 12px"><h5>${escapeHTML(e.title)}</h5><div class="meta">${icon("pin")}${escapeHTML(e.place)}</div><button type="button" class="btn btn-primary event-view-btn" data-event-view-public="${e.id}">View Event ${icon("right")}</button></div>
   </article>`;
 }
 
 
+/* Public event details: open a readable detail view for cards and buttons. */
+const EVENT_IMAGE_SET = [
+ "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1503428593586-e225b3985177?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1506157786151-b8491531f063?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1527529482837-4698179dc6ce?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1559223607-a43c990c692c?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1515169067868-5387ec356754?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1540317580384-e5d43867caa6?auto=format&fit=crop&w=1200&q=80",
+ "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=80"
+];
+function getEventImage(e){
+  // Preserve an image explicitly uploaded/selected by the event organizer.
+  if(e?.image && e.image!==DEFAULT_EVENT_IMAGE) return e.image;
+  // Otherwise choose a cover that matches the event topic instead of assigning
+  // unrelated photos simply by the event's position in the list.
+  const topic = `${e?.title||""} ${e?.category||""} ${e?.desc||""}`.toLowerCase();
+  const themed = [
+    {keys:[/sport|athlet|basketball|volleyball|badminton|tournament|game|fitness|wellness/], image:"https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/music|concert|singing|dance|festival|talent|performance|party/], image:"https://images.unsplash.com/photo-1501386761578-eac5c94b800a?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/seminar|conference|workshop|training|orientation|meeting|leadership|forum|webinar/], image:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/graduat|recognition|awarding|award|ceremony|commencement/], image:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/clean.?up|environment|tree.?plant|coastal|community service|outreach|volunteer/], image:"https://images.unsplash.com/photo-1559027615-cd4628902d4a?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/technology|programming|coding|ict|computer|innovation|hackathon|digital/], image:"https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/research|thesis|paper presentation|academic|quiz bee|intellectual/], image:"https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/election|campaign|student council|ssg|organization|turnover|induction/], image:"https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/art|culture|heritage|literary|photo.?contest|exhibit|creative/], image:"https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=1200&q=80"},
+    {keys:[/health|medical|first aid|blood donation|wellness/], image:"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80"}
+  ];
+  const match=themed.find(group=>group.keys.some(re=>re.test(topic)));
+  if(match) return match.image;
+  const idx=Math.max(0,EVENTS.findIndex(x=>String(x.id)===String(e?.id)));
+  return EVENT_IMAGE_SET[idx%EVENT_IMAGE_SET.length]||DEFAULT_EVENT_IMAGE;
+}
+function showPublicEventDetails(id){
+ const ev=EVENTS.find(x=>String(x.id)===String(id)); if(!ev)return;
+ let overlay=$("#publicEventDetailsOverlay");
+ if(!overlay){overlay=document.createElement("div");overlay.id="publicEventDetailsOverlay";overlay.className="overlay";overlay.style.zIndex="10050";overlay.innerHTML='<div class="modal" style="max-width:720px;max-height:90vh;overflow:auto"><div id="publicEventDetailsBody"></div></div>';document.body.appendChild(overlay);overlay.addEventListener("click",e=>{if(e.target===overlay)overlay.classList.add("hidden")});}
+ const img=getEventImage(ev);
+ $("#publicEventDetailsBody").innerHTML=`<div class="panel-h"><h3>${escapeHTML(ev.title)}</h3><button class="btn btn-ghost" type="button" id="closePublicEventDetails">Close</button></div><img src="${escapeHTML(img)}" alt="${escapeHTML(ev.title)}" style="width:100%;height:230px;object-fit:cover;border-radius:10px;margin:8px 0 16px"><div class="meta" style="margin:6px 0">${icon("cal")} ${fmtRange(ev)} · ${escapeHTML(ev.startTime||"")}–${escapeHTML(ev.endTime||"")}</div><div class="meta" style="margin:6px 0">${icon("pin")} ${escapeHTML(ev.place||"Venue to be announced")}</div><div class="meta" style="margin:6px 0">${icon("users")} ${escapeHTML(ev.aud||"Open to all students")}</div><h4 style="margin:18px 0 6px;color:var(--green-900)">About this Event</h4><p style="white-space:pre-line;line-height:1.8">${escapeHTML((ev.desc||"Join us for this college event. More information will be announced by the event organizers.").trim())}</p><div style="margin-top:18px"><span class="badge b-${ev.status}">${String(ev.status||"upcoming").toUpperCase()}</span></div>`;
+ overlay.classList.remove("hidden");
+ $("#closePublicEventDetails").onclick=()=>overlay.classList.add("hidden");
+}
+document.addEventListener("click",e=>{
+ const card=e.target.closest("[data-event-view-public]");
+ if(card){e.preventDefault();e.stopPropagation();showPublicEventDetails(card.dataset.eventViewPublic);return;}
+ const upcoming=e.target.closest("#viewUpcomingEvents");
+ if(upcoming){e.preventDefault();publicEventFilter="upcoming";evStart=0;showPublicPage("events");renderPublicEventsPage();}
+});
+document.addEventListener("keydown",e=>{
+ if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-event-view-public]")){e.preventDefault();showPublicEventDetails(e.target.dataset.eventViewPublic);}
+ if(e.key==="Escape")$("#publicEventDetailsOverlay")?.classList.add("hidden");
+});
+
 /* Calendar (shared by public + admin) */
-const calState = {pub:{y:2025,m:4},adm:{y:2025,m:4}};
+const calState = {pub:{y:TODAY.getFullYear(),m:TODAY.getMonth()},adm:{y:TODAY.getFullYear(),m:TODAY.getMonth()}};
 function drawCal(key, gridSel, titleSel){
   const {y,m} = calState[key];
   $(titleSel).textContent = `${MONTHS[m]} ${y}`;
+  const monthControl=document.querySelector(`[data-cal-month="${key}"]`), yearControl=document.querySelector(`[data-cal-year="${key}"]`);
+  if(monthControl){ if(!monthControl.options.length) monthControl.innerHTML=MONTHS.map((name,i)=>`<option value="${i}">${name}</option>`).join(""); monthControl.value=String(m); }
+  if(yearControl){ const eventYears=EVENTS.map(e=>Number(String(e.start||"").slice(0,4))).filter(n=>Number.isFinite(n)&&n>1900); const minY=Math.min(TODAY.getFullYear()-3,...eventYears,y), maxY=Math.max(TODAY.getFullYear()+8,...eventYears,y); const options=Array.from({length:maxY-minY+1},(_,i)=>minY+i); yearControl.innerHTML=options.map(yr=>`<option value="${yr}">${yr}</option>`).join(""); yearControl.value=String(y); }
   const first = new Date(y,m,1).getDay(), days = new Date(y,m+1,0).getDate(), prev = new Date(y,m,0).getDate();
   let h = ["SUN","MON","TUE","WED","THU","FRI","SAT"].map(d=>`<div class="dow">${d}</div>`).join("");
   const cell = (d,out,dt)=>{
@@ -702,10 +872,18 @@ function drawCal(key, gridSel, titleSel){
 function showDay(str){
   const [y,m,d] = str.split("-").map(Number), dt = new Date(y,m-1,d);
   $("#dayTitle").textContent = `${MONTHS[m-1]} ${d}, ${y}`;
-  $("#dayList").innerHTML = EVENTS.filter(e=>pd(e.start)<=dt && dt<=pd(e.end)).map(e=>
+  $("#dayList").innerHTML = approvedEvents().filter(e=>pd(e.start)<=dt && dt<=pd(e.end)).map(e=>
     `<li><b>${e.title}</b><small>${e.place} · ${e.status}</small></li>`).join("");
   $("#dayOverlay").classList.remove("hidden");
 }
+document.addEventListener("change",e=>{
+  const month=e.target.closest("[data-cal-month]"), year=e.target.closest("[data-cal-year]");
+  if(!month&&!year)return;
+  const key=month?month.dataset.calMonth:year.dataset.calYear;
+  if(month)calState[key].m=Number(month.value);
+  if(year)calState[key].y=Number(year.value);
+  if(key==="pub")drawCal("pub","#pubCal","#pubCalTitle");else drawCal("adm","#admCal","#admCalTitle");
+});
 document.addEventListener("click",e=>{
   const nav = e.target.closest("[data-cal]");
   if(nav){
@@ -723,7 +901,7 @@ $("#closeDay").onclick = ()=>$("#dayOverlay").classList.add("hidden");
 $("#dayOverlay").onclick = e=>{ if(e.target.id==="dayOverlay") e.target.classList.add("hidden") };
 
 /* ============ PUBLIC PAGES ============ */
-let evStart = 0; let publicEventFilter="upcoming"; let publicPage="dashboard";
+let evStart = 0; let publicEventFilter="upcoming"; let publicPage="dashboard"; let publicEventMonth="all";
 function showPublicPage(page){
   publicPage=page;
   document.querySelectorAll(".public-page").forEach(x=>x.classList.toggle("active",x.dataset.publicPage===page));
@@ -744,19 +922,23 @@ function renderPublic(){
   renderPublicEventsPage();
 }
 function renderPublicEventsPage(){
-  const up=approvedEvents().filter(e=>e.status===publicEventFilter), title=publicEventFilter==="upcoming"?"Upcoming Events":publicEventFilter==="ongoing"?"Ongoing Events":"Past Events";
+  const up=approvedEvents()
+    .filter(e=>(publicEventFilter==="all"||e.status===publicEventFilter) && (publicEventMonth==="all" || pd(e.start).getMonth()===Number(publicEventMonth)))
+    .sort((a,b)=>pd(a.start)-pd(b.start));
+  const titleMap={all:"All Events",upcoming:"Upcoming Events",ongoing:"Ongoing Events",completed:"Past Events"};
+  const title=titleMap[publicEventFilter]||"Events";
   $("#publicEventsTitle").textContent=title;
   document.querySelectorAll(".event-page-tabs [data-public-filter]").forEach(b=>b.classList.toggle("active",b.dataset.publicFilter===publicEventFilter));
-  const perPage=window.innerWidth<=560?1:window.innerWidth<=1100?2:4;
-  const slice=[]; for(let i=0;i<Math.min(perPage,up.length);i++) slice.push(up[(evStart+i)%up.length]);
-  $("#publicEventsPageList").innerHTML=slice.map(eventCard).join("")||`<div class="soon" style="grid-column:1/-1">No ${title.toLowerCase()} found.</div>`;
+  const list=$("#publicEventsPageList");
+  if(list) list.innerHTML=up.map(eventCard).join("")||`<div class="soon">No ${title.toLowerCase()} found for this filter. Try another status or month.</div>`;
 }
-$("#prevEv").onclick = ()=>{ const n=approvedEvents().filter(e=>e.status===publicEventFilter).length; if(n){evStart=(evStart-1+n)%n;renderPublic()} };
-$("#nextEv").onclick = ()=>{ const n=approvedEvents().filter(e=>e.status===publicEventFilter).length; if(n){evStart=(evStart+1)%n;renderPublic()} };
-$("#pagePrevEv").onclick = ()=>{ const n=approvedEvents().filter(e=>e.status===publicEventFilter).length; if(n){evStart=(evStart-1+n)%n;renderPublicEventsPage()} };
-$("#pageNextEv").onclick = ()=>{ const n=approvedEvents().filter(e=>e.status===publicEventFilter).length; if(n){evStart=(evStart+1)%n;renderPublicEventsPage()} };
+document.querySelector(".event-page-tabs")?.addEventListener("click",e=>{const b=e.target.closest("[data-public-filter]");if(!b)return;publicEventFilter=b.dataset.publicFilter;evStart=0;renderPublic();});
+$("#prevEv").onclick = ()=>{ const n=approvedEvents().filter(e=>e.status===publicEventFilter && (publicEventMonth==="all"||pd(e.start).getMonth()===Number(publicEventMonth))).length; if(n){evStart=(evStart-1+n)%n;renderPublic()} };
+$("#nextEv").onclick = ()=>{ const n=approvedEvents().filter(e=>e.status===publicEventFilter && (publicEventMonth==="all"||pd(e.start).getMonth()===Number(publicEventMonth))).length; if(n){evStart=(evStart+1)%n;renderPublic()} };
+if($("#publicEventMonth")){ $("#publicEventMonth").innerHTML=`<option value="all">All months</option>`+MONTHS.map((m,i)=>`<option value="${i}">${m}</option>`).join(""); $("#publicEventMonth").addEventListener("change",e=>{publicEventMonth=e.target.value;evStart=0;renderPublicEventsPage()}); }
 const publicDrawer = $("#publicDrawer"), drawerBackdrop = $("#drawerBackdrop");
-function setDrawer(open){ publicDrawer.classList.toggle("open",open); drawerBackdrop.classList.add("hidden"); publicDrawer.setAttribute("aria-hidden",open?"false":"true"); }
+function setDrawer(open){ publicDrawer.classList.toggle("open",open); drawerBackdrop.classList.toggle("hidden",!open); publicDrawer.setAttribute("aria-hidden",open?"false":"true"); }
+drawerBackdrop.onclick=()=>setDrawer(false);
 $("#menuBtn").onclick = ()=>setDrawer(!publicDrawer.classList.contains("open")); $("#drawerClose").onclick = ()=>setDrawer(false);
 document.addEventListener("click",e=>{if(!publicDrawer.contains(e.target)&&!e.target.closest("#menuBtn"))setDrawer(false);});
 $("#mainNav").addEventListener("click",e=>{ const a=e.target.closest("a"); if(!a)return; const id=(a.getAttribute("href")||"").replace("#",""); if(id==="contact"){ e.preventDefault(); showPublicPage("dashboard"); setTimeout(()=>document.querySelector("#contact")?.scrollIntoView({behavior:"smooth"}),80); return; } e.preventDefault(); const page=id==="about"?"about":"dashboard"; showPublicPage(page); });
@@ -764,45 +946,55 @@ $("#publicDrawer").addEventListener("click",e=>{
   const f=e.target.closest("a[data-public-filter]");
   if(f){e.preventDefault();e.stopPropagation();publicEventFilter=f.dataset.publicFilter;evStart=0;showPublicPage("events");renderPublicEventsPage();return;}
   const a=e.target.closest("a[data-drawer-link]");
-  if(!a)return;e.preventDefault();showPublicPage(a.dataset.drawerLink);
+  if(!a)return;e.preventDefault();if(a.dataset.drawerLink==="events"){publicEventFilter="all";evStart=0;}showPublicPage(a.dataset.drawerLink);
 });
 document.querySelectorAll("[data-public-page-link]").forEach(a=>a.addEventListener("click",e=>{e.preventDefault();showPublicPage(a.dataset.publicPageLink)}));
-document.addEventListener("click",e=>{
-  const v=e.target.closest("[data-event-view-public]");
-  if(v){
-    const ev=EVENTS.find(x=>x.id===Number(v.dataset.eventViewPublic));
-    if(!ev) return;
-    $("#eventDetailTitle").textContent=ev.title; $("#eventDetailStatus").innerHTML=`<span class="badge b-${ev.status}">${ev.status.toUpperCase()}</span>`;
-    $("#eventDetailBody").innerHTML=`<div class="event-detail-cover" style="background:linear-gradient(135deg,${ev.color[0]},${ev.color[1]})">${icon(ev.icon)}</div><div class="event-detail-content"><h3>${ev.title}</h3><p>${ev.desc}</p><div class="detail-grid"><div><b>Date</b><span>${fmtRange(ev)}</span></div><div><b>Duration</b><span>${durationText(ev)}</span></div><div><b>Venue</b><span>${ev.place}</span></div><div><b>Participants</b><span>${ev.aud}</span></div><div><b>Registrations</b><span>${ev.regs}</span></div><div><b>Status</b><span>${ev.status}</span></div></div></div>`;
-    showPublicPage("event-detail");
-  }
+document.addEventListener("keydown",e=>{
+  if((e.key==="Enter"||e.key===" ") && e.target.matches(".event-summary-card")){e.preventDefault();e.target.click();}
 });
 $("#backToEvents").onclick=()=>showPublicPage("events");
 window.addEventListener("resize",()=>{ if(!$("#publicView").classList.contains("hidden")){renderPublic();} });
 function renderPublicExtras(){
   $("#pubAnnouncementsList").innerHTML=ANNOUNCEMENTS.map(a=>`<div class="comment-card"><b>${a.t}</b><small style="display:block;color:var(--muted);margin:3px 0 6px">${a.d}</small><p>${a.m}</p></div>`).join("");
-  $("#pubGallery").innerHTML=["Intramurals 2025","IT Week 2025","Foundation Day","Community Outreach"].map(x=>`<div class="gallery-item"><div class="gallery-thumb">${icon("img")}</div><div class="caption"><b>${x}</b></div></div>`).join("");
-  $("#publicRegEvent").innerHTML=approvedEvents().filter(e=>e.status!=="completed").map(e=>`<option value="${e.id}">${e.title}</option>`).join("");
+  $("#pubGallery").innerHTML=approvedEvents().slice(0,8).map(x=>`<div class="gallery-item"><div class="gallery-thumb" style="background:linear-gradient(135deg,${x.color?.[0]||"#166534"},${x.color?.[1]||"#0b3d1e"});color:white">${icon(x.icon||"img")}</div><div class="caption"><b>${escapeHTML(x.title)}</b><small style="display:block;color:var(--muted)">Event collection</small></div></div>`).join("")||'<p>No event collections yet.</p>';
   updateRegistrationEventInfo();
 }
-renderPublicExtras();
 function updateRegistrationEventInfo(){
-  const e=EVENTS.find(x=>x.id===Number($("#publicRegEvent").value));
-  if(!e) return;
-  $("#publicRegDate").value=fmtRange(e);
-  $("#publicRegDuration").value=durationText(e);
-  const conflicts=findEventConflicts(e,e.id);
+  const form=$("#publicRegForm"); if(!form)return;
   const box=$("#registrationScheduleCheck");
-  if(box){ box.className=conflicts.length?"schedule-warning":"schedule-ok"; box.innerHTML=conflicts.length?`⚠ Schedule conflict: ${conflicts.map(x=>`${x.title} (${fmtRange(x)} · ${durationText(x)})`).join(", ")}. Registration cannot be submitted until the schedule is clear.`:`✓ Schedule checked — no conflict with another approved event.`; }
+  const title=String(form.elements.event?.value||"").trim();
+  const date=String(form.elements.preferredStartDate?.value||""); const endDate=String(form.elements.preferredEndDate?.value||"");
+  const startTime=String(form.elements.preferredStartTime?.value||"");
+  const endTime=String(form.elements.preferredEndTime?.value||"");
+  if(!title||!date||!endDate||!startTime||!endTime){if(box){box.className="schedule-ok";box.textContent="Enter the proposed event name, start/end dates, and times to check for schedule conflicts.";}return;}
+  if(endDate<date || (endDate===date && endTime<=startTime)){if(box){box.className="schedule-warning";box.textContent="⚠ End date/time must be after the start date/time.";}return;}
+  const candidate={start:date,end:endDate,startTime,endTime};
+  const conflicts=findEventConflicts(candidate);
+  if(box){box.className=conflicts.length?"schedule-warning":"schedule-ok";box.textContent=conflicts.length?`⚠ This schedule conflicts with ${conflicts.map(x=>`${x.title} (${fmtRange(x)} · ${durationText(x)})`).join(", ")}. Please choose another date or time.`:"✓ No conflict with currently approved events. The request will remain pending until the admin approves it.";}
 }
-$("#publicRegEvent").addEventListener("change",updateRegistrationEventInfo);
-$("#publicRegForm").onsubmit=e=>{e.preventDefault();const f=new FormData(e.currentTarget), pf=f.get("participantsFile"), al=f.get("approvedLetter"), ev=EVENTS.find(x=>x.id===Number(f.get("event")));const conflicts=ev?findEventConflicts(ev,ev.id):[];if(conflicts.length){updateRegistrationEventInfo();toast("Registration blocked: event schedule conflicts with another approved event.");return;}const r={id:REGISTRATIONS.reduce((m,x)=>Math.max(m,x.id),0)+1,name:f.get("name").trim(),email:f.get("email").trim(),eventId:Number(f.get("event")),eventName:ev?.title||"",date:fmtRange(ev),duration:durationText(ev),participantsFile:pf?.name||"",approvedLetter:al?.name||"",status:"pending",submitted:`${MONTHS[TODAY.getMonth()]} ${TODAY.getDate()}, ${TODAY.getFullYear()}`};REGISTRATIONS.push(r);saveData();e.currentTarget.reset();renderPublicExtras();toast("Registration submitted for approval");};
-$("#publicCommentForm").onsubmit=e=>{e.preventDefault();e.currentTarget.reset();toast("Comment submitted for review");};
-$("#publicFeedbackForm").onsubmit=e=>{e.preventDefault();e.currentTarget.reset();toast("Thank you for your feedback");};
+
+const publicDateInput=$("#publicRegStartDate"); const publicEndDateInput=$("#publicRegEndDate"); if(publicDateInput){publicDateInput.min=`${TODAY.getFullYear()}-${String(TODAY.getMonth()+1).padStart(2,"0")}-${String(TODAY.getDate()).padStart(2,"0")}`;} if(publicEndDateInput){publicEndDateInput.min=publicDateInput?.min||"";}
+publicDateInput?.addEventListener("change",()=>{if(publicEndDateInput){publicEndDateInput.min=publicDateInput.value||publicDateInput.min;if(publicEndDateInput.value&&publicEndDateInput.value<publicDateInput.value)publicEndDateInput.value=publicDateInput.value;}updateRegistrationEventInfo();});
+["input","change"].forEach(ev=>["publicRegEvent","publicRegStartDate","publicRegEndDate","publicRegStartTime","publicRegEndTime"].forEach(id=>$("#"+id)?.addEventListener(ev,updateRegistrationEventInfo)));
+$("#publicRegForm").onsubmit=e=>{
+  e.preventDefault();const f=new FormData(e.currentTarget), al=f.get("approvedLetter");
+  const title=String(f.get("event")||"").trim(), date=String(f.get("preferredStartDate")||""), endDate=String(f.get("preferredEndDate")||""), startTime=String(f.get("preferredStartTime")||""), endTime=String(f.get("preferredEndTime")||"");
+  if(!title||!date||!endDate||!startTime||!endTime||endDate<date||(endDate===date&&endTime<=startTime)){updateRegistrationEventInfo();toast("Please complete the proposed event schedule.");return;}
+  const candidate={start:date,end:endDate,startTime,endTime};const conflicts=findEventConflicts(candidate);
+  if(conflicts.length){const box=$("#registrationScheduleCheck");if(box){box.className="schedule-warning";box.textContent=`⚠ This schedule conflicts with ${conflicts.map(x=>`${x.title} (${fmtRange(x)} · ${durationText(x)})`).join(", ")}. Please choose another date or time.`;}toast("Request not submitted: schedule conflict detected.");return;}
+  const duplicate=REGISTRATIONS.some(r=>r.requestType==="event-proposal"&&r.status!=="rejected"&&String(r.eventName||"").trim().toLowerCase()===title.toLowerCase()&&String(r.date||"")===date&&String(r.endDate||r.date||"")===endDate);
+  if(duplicate){toast("A request with this event name and date is already awaiting review.");return;}
+  const r={id:REGISTRATIONS.reduce((m,x)=>Math.max(m,Number(x.id)||0),0)+1,name:String(f.get("name")||"").trim(),email:String(f.get("email")||"").trim(),eventId:null,eventName:title,requestType:"event-proposal",date,endDate,duration:`${startTime}–${endTime}`,startTime,endTime,venue:String(f.get("preferredVenue")||"").trim(),participants:String(f.get("participants")||"").trim(),approvedLetter:al?.name||"",approvedLetterData:"",approvedLetterKey:"",status:"pending",submitted:`${MONTHS[TODAY.getMonth()]} ${TODAY.getDate()}, ${TODAY.getFullYear()}`};
+  const finishSubmission=()=>{REGISTRATIONS.push(r);saveData();e.currentTarget.reset();const box=$("#registrationScheduleCheck");if(box){box.className="schedule-ok";box.textContent="Submitted successfully! Your event proposal is awaiting admin approval and will appear publicly only after approval.";}renderPublicExtras();toast("Submitted successfully! Your event proposal is awaiting admin approval.");};
+  if(al && al.size){if(al.size>2*1024*1024){toast("Please upload an approved letter smaller than 2 MB.");return;}const reader=new FileReader();reader.onload=async()=>{try{r.approvedLetterKey=`registration-${r.id}-${Date.now()}`;await saveLetter(r.approvedLetterKey,String(reader.result||""));finishSubmission();}catch(err){r.approvedLetterKey="";toast("The approved letter could not be saved. Please try a smaller file and submit again.");}};reader.onerror=()=>toast("Could not read the approved letter. Please try again.");reader.readAsDataURL(al);}else finishSubmission();
+};
+$("#publicCommentForm").onsubmit=e=>{e.preventDefault();const f=new FormData(e.currentTarget);COMMENTS.push({id:COMMENTS.reduce((m,x)=>Math.max(m,Number(x.id)||0),0)+1,n:f.get("name").trim(),t:f.get("text").trim(),d:TODAY.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"}),status:"pending"});saveData();e.currentTarget.reset();toast("Comment submitted for admin review");};
+$("#publicFeedbackForm").onsubmit=e=>{e.preventDefault();const f=new FormData(e.currentTarget);FEEDBACK.push({id:FEEDBACK.reduce((m,x)=>Math.max(m,Number(x.id)||0),0)+1,n:f.get("name").trim(),rating:Number(f.get("rating")),t:f.get("text").trim(),d:TODAY.toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"})});saveData();e.currentTarget.reset();toast("Thank you for your feedback");};
 
 /* ============ LOGIN ============ */
-const openLogin = ()=>{ if(store.get("tpc_admin")==="1") return showAdmin(); $("#loginOverlay").classList.remove("hidden"); $("#loginErr").textContent=""; setTimeout(()=>$("#user").focus(),30) };
-$("#openLogin").onclick = openLogin;
+const openLogin = (ev)=>{ if(ev)ev.preventDefault(); const overlay=$("#loginOverlay"); if(!overlay)return; overlay.classList.remove("hidden"); overlay.style.display="grid"; $("#loginErr").textContent=""; setTimeout(()=>$("#user")?.focus(),30) };
+window.tpcOpenAdminLogin=openLogin;
+$("#openLogin").addEventListener("click",openLogin);
 $("#cancelLogin").onclick = ()=>$("#loginOverlay").classList.add("hidden");
 $("#loginOverlay").onclick = e=>{ if(e.target.id==="loginOverlay") e.target.classList.add("hidden") };
 function setErr(el,box,msg){
@@ -837,7 +1029,8 @@ function tryLogin(){
 }
 $("#user").addEventListener("input",()=>setErr($("#user"),$("#e_user"),""));
 $("#pass").addEventListener("input",()=>setErr($("#pass"),$("#e_pass"),""));
-$("#doLogin").onclick = tryLogin;
+window.tpcTryAdminLogin=tryLogin;
+$("#doLogin").addEventListener("click",tryLogin);
 ["#user","#pass"].forEach(s=>$(s).addEventListener("keydown",e=>{ if(e.key==="Enter") tryLogin() }));
 
 /* ============ ADMIN ============ */
@@ -847,7 +1040,7 @@ const NAV = [
   ["Calendar","calclock"],["Announcements","mega"],["Registration","users"],["Gallery","img"],
   ["Comment","comment"],["Feedback","star"],["Setting","gear"]
 ];
-let page = "Dashboard";
+let page = "Dashboard", adminEventMonth="all";
 let eventFilter = "all";
 
 function renderNav(){
@@ -858,54 +1051,85 @@ function renderNav(){
       (sub && active ? `<div class="sub">${sub.map(s=>`<button class="${page==="Events"&&eventFilter===filterFor[s]?"active":""}" data-page="Events" data-filter="${filterFor[s]}">${s}</button>`).join("")}</div>`:"");
   }).join("");
 }
-$("#adminNav").addEventListener("click",e=>{ const b=e.target.closest("[data-page]"); if(b){ page=b.dataset.page; if(b.dataset.filter) eventFilter=b.dataset.filter; if(page==="Events") eventFilter=eventFilter||"all"; renderAdmin() } });
+$("#adminNav").addEventListener("click",e=>{ const b=e.target.closest("[data-page]"); if(b){ page=b.dataset.page; if(b.dataset.filter) eventFilter=b.dataset.filter; else if(page==="Events") eventFilter="all"; renderAdmin() } });
 
 function setAdminDrawer(open){
-  $("#adminDrawer").classList.toggle("open",open); $("#adminDrawerBackdrop").classList.add("hidden");
+  $("#adminDrawer").classList.toggle("open",open);
+  $("#adminDrawerBackdrop").classList.toggle("hidden",!open);
+  document.body.classList.toggle("drawer-open",open);
 }
+$("#adminDrawerBackdrop").onclick=()=>setAdminDrawer(false);
 $("#adminMenuBtn").onclick=()=>setAdminDrawer(!$("#adminDrawer").classList.contains("open"));
 document.addEventListener("click",e=>{const drawer=$("#adminDrawer");if(drawer&&!drawer.contains(e.target)&&!e.target.closest("#adminMenuBtn"))setAdminDrawer(false);});
 
 function saveData(){
-  try{ sessionStorage.setItem("tpc_events",JSON.stringify(EVENTS)); sessionStorage.setItem("tpc_announcements",JSON.stringify(ANNOUNCEMENTS)); sessionStorage.setItem("tpc_registrations",JSON.stringify(REGISTRATIONS)); }catch(e){}
+  try{ localStorage.setItem("tpc_events",JSON.stringify(EVENTS)); localStorage.setItem("tpc_announcements",JSON.stringify(ANNOUNCEMENTS)); localStorage.setItem("tpc_registrations",JSON.stringify(REGISTRATIONS)); localStorage.setItem("tpc_comments",JSON.stringify(COMMENTS)); localStorage.setItem("tpc_feedback",JSON.stringify(FEEDBACK)); }catch(e){}
 }
 function loadData(){
   try{
-    const ev=JSON.parse(sessionStorage.getItem("tpc_events")||"null"); if(Array.isArray(ev)) { EVENTS.splice(0,EVENTS.length,...ev.map(x=>({...x,approval:x.approval||"approved",startTime:x.startTime||"08:00",endTime:x.endTime||"17:00"}))); }
-    const an=JSON.parse(sessionStorage.getItem("tpc_announcements")||"null"); if(Array.isArray(an)) { ANNOUNCEMENTS.splice(0,ANNOUNCEMENTS.length,...an); }
-    const rg=JSON.parse(sessionStorage.getItem("tpc_registrations")||"null"); if(Array.isArray(rg)) { REGISTRATIONS.splice(0,REGISTRATIONS.length,...rg); }
+    const ev=JSON.parse(localStorage.getItem("tpc_events")||"null"); if(Array.isArray(ev)) { EVENTS.splice(0,EVENTS.length,...ev.map(x=>({...x,approval:(x.approval==="pending"||x.status==="pending")?"pending":x.approval==="rejected"?"rejected":"approved",startTime:x.startTime||"08:00",endTime:x.endTime||"17:00",color:x.color||["#166534","#0b3d1e"]}))); }
+    const an=JSON.parse(localStorage.getItem("tpc_announcements")||"null"); if(Array.isArray(an)) { ANNOUNCEMENTS.splice(0,ANNOUNCEMENTS.length,...an); }
+    const rg=JSON.parse(localStorage.getItem("tpc_registrations")||"null"); if(Array.isArray(rg)) { REGISTRATIONS.splice(0,REGISTRATIONS.length,...rg); }
+    const cm=JSON.parse(localStorage.getItem("tpc_comments")||"null"); if(Array.isArray(cm)) COMMENTS.splice(0,COMMENTS.length,...cm);
+    const fb=JSON.parse(localStorage.getItem("tpc_feedback")||"null"); if(Array.isArray(fb)) FEEDBACK.splice(0,FEEDBACK.length,...fb);
   }catch(e){}
 }
 loadData();
+const SAMPLE_UPCOMING_EVENTS = [
+ {title:"Tech Innovation Expo 2026",desc:"Explore student technology projects, software demonstrations, and creative digital solutions.",start:"2026-11-05",end:"2026-11-06",place:"TPC Audio Visual Room",aud:"TPC students, faculty, and guests",startTime:"09:00",endTime:"16:00",icon:"chip",color:["#1e3fae","#0b1b5e"],regs:0},
+ {title:"BSIS Week 2026",desc:"A week of information systems challenges, team activities, and student showcases.",start:"2026-11-10",end:"2026-11-12",place:"TPC Campus",aud:"BSIS students and faculty",startTime:"08:30",endTime:"17:00",icon:"users",color:["#166534","#0b3d1e"],regs:0},
+ {title:"College Days 2026",desc:"A week of student performances, competitions, sports, and campus-wide celebrations.",start:"2026-11-23",end:"2026-11-27",place:"Talibon Polytechnic College Campus",aud:"TPC students, faculty, and staff",startTime:"08:00",endTime:"17:00",icon:"cap",color:["#166534","#0b3d1e"],regs:0},
+ {title:"Career and Internship Fair 2026",desc:"Meet employers, learn about internship opportunities, and prepare for your career journey.",start:"2026-12-03",end:"2026-12-04",place:"TPC Covered Court",aud:"Graduating students and interested learners",startTime:"09:00",endTime:"15:30",icon:"mic",color:["#6d3aa8","#361b5c"],regs:0},
+ {title:"Community Outreach Day 2026",desc:"Students and staff join together for a community service and outreach activity.",start:"2026-12-12",end:"2026-12-12",place:"Talibon, Bohol",aud:"Registered volunteers",startTime:"08:00",endTime:"12:00",icon:"tree",color:["#2f7a3a","#154a1f"],regs:0}
+];
+let sampleEventsAdded=false;
+// Only seed demonstration events on a brand-new browser profile. Once an event list
+// has been saved, never recreate deleted events; the admin list remains the source of truth.
+const hasSavedEventList = (()=>{ try { return localStorage.getItem("tpc_events") !== null; } catch(e) { return false; } })();
+if(!hasSavedEventList){
+  SAMPLE_UPCOMING_EVENTS.forEach(sample=>{if(!EVENTS.some(e=>String(e.title||"").trim().toLowerCase()===sample.title.toLowerCase())){EVENTS.push({...sample,id:nextEventId(),status:eventStatusForDate(sample.start,sample.end),approval:"approved"});sampleEventsAdded=true;}});
+}
+EVENTS.forEach(e=>{
+  e.color=e.color||["#166534","#0b3d1e"];
+  // Migrate the old shared demo cover so each event uses its own fallback cover.
+  if(e.image===DEFAULT_EVENT_IMAGE) e.image="";
+  if(typeof e.image!=="string") e.image="";
+});
+if(sampleEventsAdded){try{localStorage.setItem("tpc_events",JSON.stringify(EVENTS));}catch(e){}}
 
 function nextEventId(){ return EVENTS.reduce((m,e)=>Math.max(m,Number(e.id)||0),0)+1; }
 function eventStatusForDate(start,end){
-  const t=TODAY.getTime(), a=pd(start).getTime(), b=pd(end).getTime();
-  return t<a?"upcoming":t>b?"completed":"ongoing";
+  // Status follows the event's calendar month: events in the current month are ongoing.
+  const nowMonth=TODAY.getFullYear()*12+TODAY.getMonth();
+  const a=pd(start), b=pd(end);
+  const startMonth=a.getFullYear()*12+a.getMonth(), endMonth=b.getFullYear()*12+b.getMonth();
+  if(endMonth<nowMonth) return "completed";
+  if(startMonth>nowMonth) return "upcoming";
+  return "ongoing";
 }
+// Keep displayed event status aligned with the current date instead of stale demo dates.
+EVENTS.forEach(e=>{ if(e.start && e.end) e.status=eventStatusForDate(e.start,e.end); });
 function eventRows(list){
   return list.map(e=>`<tr>
     <td><div class="t">${e.title}</div><small>${e.aud}</small></td>
-    <td>${fmtRange(e)}<br><small>${durationText(e)}</small></td><td>${e.place}</td><td>${e.regs}</td>
+    <td>${fmtRange(e)}<br><small>${durationText(e)}</small></td><td>${e.place}</td>
     <td><span class="badge b-${e.status}" style="margin:0">${e.status.toUpperCase()}</span><br><span class="badge approval-${e.approval||"approved"}" style="margin:5px 0 0">${(e.approval||"approved").toUpperCase()}</span></td>
     <td><div class="act"><button aria-label="View ${e.title}" data-event-view="${e.id}">${icon("eye")}</button><button aria-label="Edit ${e.title}" data-event-edit="${e.id}">${icon("edit")}</button>${(e.approval||"approved")==="pending"?`<button class="btn btn-primary" style="height:30px;padding:0 8px;font-size:10px" data-event-approve="${e.id}">Approve</button><button class="btn btn-ghost" style="height:30px;padding:0 8px;font-size:10px" data-event-reject="${e.id}">Reject</button>`:""}<button aria-label="Delete ${e.title}" data-event-delete="${e.id}">${icon("trash")}</button></div></td>
   </tr>`).join("");
 }
 function eventForm(existing=null){
-  const e=existing||{title:"",desc:"",start:"",end:"",startTime:"08:00",endTime:"17:00",place:"",aud:"Open to all students",status:"upcoming",approval:"pending",icon:"cal",color:["#166534","#0b3d1e"],regs:0};
+  const e=existing||{title:"",desc:"",start:"",end:"",startTime:"08:00",endTime:"17:00",place:"",aud:"Open to all students",status:"upcoming",approval:"approved",icon:"cal",color:["#166534","#0b3d1e"],regs:0};
   const title=existing?"Edit Event":"Add Upcoming Event";
-  return `<section class="form-card admin-form" style="border:0;padding:0">
+  return `<section class="register-page-shell admin-event-form-shell" style="max-width:760px;margin:0 auto;padding:clamp(16px,3vw,30px)">
     <div class="panel-h"><h3 id="eventModalTitle">${title}</h3><button class="btn btn-ghost" type="button" id="closeEventModal">Close</button></div>
-    <div class="notice">Fill in the event schedule. New events wait for admin approval before appearing on the public calendar. The schedule checker updates while you type.</div>
+    <div class="notice">Complete the event details below, similar to the public event registration form. Administrator-created events publish immediately; public event proposals remain hidden until approved.</div>
     <form id="eventForm"><input type="hidden" name="id" value="${existing?e.id:""}"><div class="form-grid">
       <div class="full"><label class="form-label">Event title *</label><input name="title" maxlength="80" required value="${e.title}"><div class="ferr" data-error="title"></div></div>
       <div><label class="form-label">Start date *</label><input type="date" name="start" required value="${e.start}"><div class="ferr" data-error="start"></div></div>
       <div><label class="form-label">End date *</label><input type="date" name="end" required value="${e.end}"><div class="ferr" data-error="end"></div></div>
       <div><label class="form-label">Start time *</label><input type="time" name="startTime" required value="${e.startTime||"08:00"}"></div>
       <div><label class="form-label">End time *</label><input type="time" name="endTime" required value="${e.endTime||"17:00"}"></div>
-      <div><label class="form-label">Venue *</label><input name="place" maxlength="80" required value="${e.place}"></div><div><label class="form-label">Audience</label><input name="aud" maxlength="80" value="${e.aud}"></div>
-      <div><label class="form-label">Icon</label><select name="icon">${["cal","ball","chip","leaf","tree","cap","mic","users"].map(x=>`<option value="${x}" ${e.icon===x?"selected":""}>${x}</option>`).join("")}</select></div>
-      <div><label class="form-label">Registered</label><input type="number" min="0" name="regs" value="${e.regs||0}"></div>
+      <div><label class="form-label">Venue *</label><input name="place" maxlength="80" required value="${e.place}"></div><div><label class="form-label">Audience</label><input name="aud" maxlength="80" value="${e.aud}"></div><div class="full"><label class="form-label">Event picture (optional)</label><input type="file" name="imageFile" accept="image/*"><small style="color:var(--muted)">Choose an image from your device. Use a picture related to this event. ${e.image?"An image is already saved; choose a new file only if you want to replace it.":"Recommended: JPG, PNG, or WebP."}</small><div id="eventImagePreview" style="margin-top:8px">${e.image?`<img src="${e.image}" alt="Current event picture" style="max-width:220px;max-height:130px;object-fit:cover;border-radius:8px">`:""}</div></div>
       <div class="full"><label class="form-label">Description *</label><textarea name="desc" maxlength="240" required>${e.desc}</textarea></div>
       <div class="full schedule-ok" id="eventScheduleCheck"></div>
     </div><div class="form-actions"><button type="button" class="btn btn-ghost" id="cancelEventModal">Cancel</button><button class="btn btn-primary" type="submit">${existing?"Save changes":"Create event"}</button></div></form></section>`;
@@ -924,21 +1148,23 @@ function openEventModal(existing=null){
   const close=()=>$("#eventOverlay").classList.add("hidden"); $("#closeEventModal").onclick=close; $("#cancelEventModal").onclick=close;
   ["start","end","startTime","endTime"].forEach(n=>$("#eventForm [name='"+n+"']").addEventListener("input",()=>updateEventScheduleCheck(existing?.id||null)));
   updateEventScheduleCheck(existing?.id||null);
+  const imageInput=$("#eventForm [name=imageFile]"); if(imageInput) imageInput.onchange=()=>{const file=imageInput.files?.[0],preview=$("#eventImagePreview");if(!file||!preview)return;if(!file.type.startsWith("image/")){toast("Please choose an image file.");imageInput.value="";return;}if(file.size>3*1024*1024){toast("Please choose an image smaller than 3 MB.");imageInput.value="";return;}const reader=new FileReader();reader.onload=()=>preview.innerHTML=`<img src="${String(reader.result)}" alt="Event picture preview" style="max-width:220px;max-height:130px;object-fit:cover;border-radius:8px">`;reader.readAsDataURL(file);};
   $("#eventForm").onsubmit=e=>{e.preventDefault(); const f=new FormData(e.currentTarget),start=f.get("start"),end=f.get("end"),startTime=f.get("startTime"),endTime=f.get("endTime"); let valid=true;
     if(!f.get("title").trim()){ $("[data-error=title]").textContent="Enter an event title.";valid=false } if(!start){$("[data-error=start]").textContent="Choose a start date.";valid=false} if(!end){$("[data-error=end]").textContent="Choose an end date.";valid=false} if(start&&end&&end<start){$("[data-error=end]").textContent="End date cannot be before start date.";valid=false} if(start&&end&&start===end&&endTime<=startTime){toast("End time must be after start time.");valid=false} if(!valid)return;
     const candidate={start,end,startTime,endTime}; const conflicts=findEventConflicts(candidate,f.get("id")?Number(f.get("id")):null); if(conflicts.length){updateEventScheduleCheck(f.get("id")?Number(f.get("id")):null);toast("Cannot save: schedule conflict detected.");return;}
-    const obj={id:f.get("id")?Number(f.get("id")):nextEventId(),title:f.get("title").trim(),desc:f.get("desc").trim(),start,end,startTime,endTime,place:f.get("place").trim(),aud:f.get("aud").trim()||"Open to all students",status:eventStatusForDate(start,end),approval:existing?.approval||"pending",icon:f.get("icon"),color:["#166534","#0b3d1e"],regs:Number(f.get("regs"))||0};
-    const idx=EVENTS.findIndex(x=>x.id===obj.id); if(idx>=0) EVENTS[idx]=obj; else EVENTS.push(obj); saveData(); close(); page="Events"; eventFilter="all"; renderAdmin(); renderPublic(); toast(idx>=0?"Event updated successfully":"Event created — pending approval");
+    const saveEvent=(imageData)=>{const obj={id:f.get("id")?Number(f.get("id")):nextEventId(),title:f.get("title").trim(),desc:f.get("desc").trim(),start,end,startTime,endTime,place:f.get("place").trim(),aud:f.get("aud").trim()||"Open to all students",image:imageData||existing?.image||"",status:eventStatusForDate(start,end),approval:existing?(existing.approval||"approved"):"approved",icon:existing?.icon||"cal",color:existing?.color||["#166534","#0b3d1e"],regs:Number(existing?.regs)||0};
+    const idx=EVENTS.findIndex(x=>x.id===obj.id); if(idx>=0) EVENTS[idx]=obj; else EVENTS.push(obj); try{saveData();}catch(err){toast("Could not save: the image may be too large. Choose a smaller image.");return;} close(); page="Events"; eventFilter="all"; renderAdmin(); renderPublic(); drawCal("pub","#pubCal","#pubCalTitle"); if($("#admCal"))drawCal("adm","#admCal","#admCalTitle"); toast(idx>=0?"Event updated successfully":"Event created and published");};
+    const file=imageInput?.files?.[0];if(file){if(!file.type.startsWith("image/")||file.size>3*1024*1024){toast("Choose a valid image smaller than 3 MB.");return;}const reader=new FileReader();reader.onload=()=>saveEvent(String(reader.result||""));reader.onerror=()=>toast("Could not read the event picture.");reader.readAsDataURL(file);}else saveEvent(existing?.image||"");
   };
 }
 function adminEvents(){
-  const filterMap={"all":"All Events","upcoming":"Upcoming","ongoing":"Ongoing","completed":"Past"}; const list=eventFilter==="all"?EVENTS:EVENTS.filter(e=>e.status===eventFilter);
-  $("#aBody").innerHTML=`<div class="admin-toolbar"><div><h3 style="font-size:20px;color:var(--green-900)">Events</h3><p style="font-size:12px;color:var(--muted)">Create, update, review, and remove scheduled college events.</p></div><button class="btn btn-primary" id="addEventBtn">${icon("plus")} Add event</button></div><div class="panel"><div class="admin-toolbar"><div class="filters">${Object.entries(filterMap).map(([k,v])=>`<button class="filter-btn ${eventFilter===k?"active":""}" data-filter="${k}">${v}</button>`).join("")}</div><span style="font-size:11.5px;color:var(--muted)">${list.length} event${list.length===1?"":"s"}</span></div><div class="tbl-wrap"><table><thead><tr><th>Event</th><th>Date / Time</th><th>Venue</th><th>Registered</th><th>Status / Approval</th><th></th></tr></thead><tbody>${eventRows(list)||`<tr><td colspan="6" style="text-align:center;color:var(--muted);padding:30px">No events found.</td></tr>`}</tbody></table></div></div>`;
-  $("#addEventBtn").onclick=()=>openEventModal();
+  const filterMap={"all":"All Events","upcoming":"Upcoming","ongoing":"Ongoing","completed":"Past"}; /* Admin must see every saved event, including pending/rejected proposals, so records are not hidden from the Events menu. Public pages still use approvedEvents() and therefore do not publish unapproved proposals. */ const list=EVENTS.filter(e=>(eventFilter==="all"||e.status===eventFilter)&&(adminEventMonth==="all"||pd(e.start).getMonth()===Number(adminEventMonth)));
+  $("#aBody").innerHTML=`<div class="admin-toolbar"><div><h3 style="font-size:20px;color:var(--green-900)">Events</h3><p style="font-size:12px;color:var(--muted)">Create, update, review, and remove scheduled college events.</p></div><button class="btn btn-primary" id="addEventBtn">${icon("plus")} Add event</button></div><div class="panel"><div class="admin-toolbar"><div class="filters">${Object.entries(filterMap).map(([k,v])=>`<button class="filter-btn ${eventFilter===k?"active":""}" data-filter="${k}">${v}</button>`).join("")}</div><label style="font-size:11.5px;color:var(--muted);display:flex;align-items:center;gap:6px">Month <select id="adminEventMonth" style="padding:7px;border:1px solid var(--line);border-radius:6px"><option value="all">All</option>${MONTHS.map((m,i)=>`<option value="${i}" ${adminEventMonth===String(i)?"selected":""}>${m}</option>`).join("")}</select></label><span style="font-size:11.5px;color:var(--muted)">${list.length} event${list.length===1?"":"s"}</span></div><div class="tbl-wrap"><table><thead><tr><th>Event</th><th>Date / Time</th><th>Venue</th><th>Status / Approval</th><th></th></tr></thead><tbody>${eventRows(list)||`<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:30px">No events found.</td></tr>`}</tbody></table></div></div>`;
+  $("#addEventBtn").onclick=()=>openEventModal(); const monthSelect=$("#adminEventMonth"); if(monthSelect) monthSelect.onchange=()=>{adminEventMonth=monthSelect.value;renderAdmin()};
 }
 
 function adminCalendar(){
-  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Event Calendar</h3><p>Review scheduled events by month and open a date to see its events.</p></div><button class="btn btn-primary" id="calendarAddEvent">${icon("plus")} Add event</button></div><section class="panel"><div class="cal-h"><button data-cal="-1" data-t="adm" aria-label="Previous month">${icon("left")}</button><span id="admCalTitle"></span><button data-cal="1" data-t="adm" aria-label="Next month">${icon("right")}</button></div><div class="cal" id="admCal"></div><div class="legend"><span>Event names appear on approved scheduled dates</span></div></section>`;
+  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Event Calendar</h3><p>Review scheduled events by month and open a date to see its events.</p></div><button class="btn btn-primary" id="calendarAddEvent">${icon("plus")} Add event</button></div><section class="panel"><div class="cal-h calendar-controls"><button data-cal="-1" data-t="adm" aria-label="Previous month">${icon("left")}</button><span id="admCalTitle"></span><label>Month <select data-cal-month="adm" aria-label="Choose month"></select></label><label>Year <select data-cal-year="adm" aria-label="Choose year"></select></label><button data-cal="1" data-t="adm" aria-label="Next month">${icon("right")}</button></div><div class="cal" id="admCal"></div><div class="legend"><span>Event names appear on approved scheduled dates</span></div></section>`;
   drawCal("adm","#admCal","#admCalTitle"); $("#calendarAddEvent").onclick=()=>openEventModal();
 }
 function adminAnnouncements(){
@@ -954,34 +1180,44 @@ function announcementForm(index=null){
 }
 function adminRegistration(){
   const pending=REGISTRATIONS.filter(r=>r.status==="pending");
-  const rows=REGISTRATIONS.map(r=>{const ev=EVENTS.find(e=>e.id===Number(r.eventId)); return `<tr><td><div class="t">${r.name}</div><small>${r.email}</small><br><small>Participants: ${r.participantsFile||"—"} · Letter: ${r.approvedLetter||"—"}</small></td><td>${ev?ev.title:"Unknown event"}<br><small>${ev?durationText(ev):""}</small></td><td>${r.date}</td><td><span class="badge ${r.status==="approved"?"b-upcoming":r.status==="rejected"?"b-completed":"b-ongoing"}" style="margin:0">${r.status.toUpperCase()}</span></td><td>${r.status==="pending"?`<div class="act"><button class="btn btn-primary" style="height:30px;padding:0 9px;font-size:10px" data-reg-approve="${r.id}">Approve</button><button class="btn btn-ghost" style="height:30px;padding:0 9px;font-size:10px" data-reg-reject="${r.id}">Reject</button></div>`:"—"}</td></tr>`}).join("");
-  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Registration</h3><p>Approve or reject registration requests submitted from the public site.</p></div><div class="notice" style="margin:0"><b>${pending.length}</b> pending request${pending.length===1?"":"s"}</div></div><div class="panel"><div class="tbl-wrap"><table><thead><tr><th>Applicant</th><th>Event</th><th>Submitted</th><th>Status</th><th>Action</th></tr></thead><tbody>${rows||`<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:30px">No registration requests.</td></tr>`}</tbody></table></div></div>`;
+  const sorted=REGISTRATIONS.slice().sort((a,b)=>Number(b.id)-Number(a.id));
+  const makeRows=(items)=>items.map(r=>{
+    const ev=EVENTS.find(e=>Number(e.id)===Number(r.eventId));
+    const title=r.eventName||ev?.title||"Unknown event";
+    const schedule=r.requestType==="event-proposal"?`${r.date||"Date not set"}${r.endDate&&r.endDate!==r.date?` – ${escapeHTML(r.endDate)}`:""}<br><small>${escapeHTML(r.duration||"")}${r.venue?` · ${escapeHTML(r.venue)}`:""}</small>${r.participants?`<div class="admin-participants"><b>Participants:</b> ${escapeHTML(r.participants)}</div>`:""}`:`${r.date||"—"}<br><small>${ev?durationText(ev):""}</small>`;
+    const type=r.requestType==="event-proposal"?'<span class="badge approval-pending" style="margin-top:4px">EVENT PROPOSAL</span>':"";
+    const letter=r.approvedLetterData?`<a class="letter-view" href="${r.approvedLetterData}" target="_blank" rel="noopener">View letter${r.approvedLetter?` (${escapeHTML(r.approvedLetter)})`:""}</a>`:r.approvedLetterKey?`<button type="button" class="letter-view" data-letter-view="${escapeHTML(r.approvedLetterKey)}">View letter${r.approvedLetter?` (${escapeHTML(r.approvedLetter)})`:""}</button>`:r.approvedLetter?`<span class="letter-unavailable" title="This older record saved only the filename">${escapeHTML(r.approvedLetter)} <small>(file not stored)</small></span>`:"—";
+    return `<tr><td data-label="Event"><div class="t">${escapeHTML(title)}</div>${type}</td><td data-label="Submitted By"><div class="t">${escapeHTML(r.name||"—")}</div><small>${escapeHTML(r.email||"")}</small></td><td data-label="Participants">${escapeHTML(r.participants||"—")}</td><td data-label="Schedule / Venue">${schedule}</td><td data-label="Submitted">${escapeHTML(r.submitted||r.date||"—")}</td><td data-label="Approved Letter">${letter}</td><td data-label="Action">${r.status==="pending"?`<div class="reg-actions"><button class="btn btn-primary" data-reg-approve="${r.id}">Approve</button><button class="btn btn-reject" data-reg-reject="${r.id}">Reject</button></div>`:`<span class="reviewed-label">${String(r.status||"reviewed").toUpperCase()}</span>`}</td></tr>`;
+  }).join("");
+  const table=(rows,empty)=>`<div class="registration-table-wrap"><table class="registration-table"><thead><tr><th>Event Name</th><th>Submitted By</th><th>Participants</th><th>Schedule / Venue</th><th>Submitted</th><th>Approved Letter</th><th>Action</th></tr></thead><tbody>${rows||`<tr><td colspan="7" style="text-align:center;color:var(--muted);padding:30px">${empty}</td></tr>`}</tbody></table></div>`;
+  const pendingRows=makeRows(sorted.filter(r=>r.status==="pending"));
+  const approvedRows=makeRows(sorted.filter(r=>r.status!=="pending"));
+  $("#aBody").innerHTML=`<div class="a-welcome registration-heading"><div><h3>Registration & Event Proposals</h3><p>Requests needing approval are separated from requests already reviewed.</p></div><div class="registration-count">${pending.length} pending request${pending.length===1?"":"s"}</div></div><div class="panel admin-registration-panel"><h3 style="margin-bottom:12px;color:var(--green-900)">Still Need Approval (${pending.length})</h3><div class="notice">Event proposals are checked for schedule conflicts before approval. Proposed events stay hidden from public listings until approved.</div>${table(pendingRows,"No requests are waiting for approval.")}</div><div class="panel admin-registration-panel" style="margin-top:18px"><h3 style="margin-bottom:12px;color:var(--green-900)">Already Reviewed (${sorted.length-pending.length})</h3>${table(approvedRows,"No approved or rejected requests yet.")}</div>`;
 }
 function adminGallery(){
   const items=["Intramurals 2025","IT Week 2025","Foundation Day","Community Outreach","Recognition Program","Tree Planting Day","Enrollment Orientation","TPC Campus"];
   $("#aBody").innerHTML=`<div class="admin-toolbar"><div><h3 style="font-size:20px;color:var(--green-900)">Gallery</h3><p style="font-size:12px;color:var(--muted)">Manage event photo collections shown in the system.</p></div><button class="btn btn-primary" data-toast="Gallery upload is ready for integration">${icon("plus")} Add photos</button></div><div class="gallery-grid">${items.map((x,i)=>`<div class="gallery-item"><div class="gallery-thumb">${icon("img")}</div><div class="caption"><b>${x}</b><br><span style="color:var(--muted)">${6+i} photos</span></div></div>`).join("")}</div>`;
 }
 function adminComments(){
-  const comments=[{n:"Student A",d:"May 28, 2025",t:"Looking forward to IT Week!"},{n:"Student B",d:"May 27, 2025",t:"Will there be registration on the event day?"},{n:"Faculty Member",d:"May 26, 2025",t:"Thank you for keeping the schedule updated."}];
-  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Comments</h3><p>Review public comments and moderate inappropriate content.</p></div></div><div class="panel">${comments.map((c,i)=>`<div class="comment-card"><div class="comment-meta"><b>${c.n}</b><span>${c.d}</span></div><p>${c.t}</p><div class="form-actions" style="margin-top:10px"><button class="btn btn-ghost" data-toast="Comment hidden">Hide</button><button class="btn btn-primary" data-toast="Comment approved">Approve</button></div></div>`).join("")}</div>`;
+  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Comments</h3><p>Review and moderate comments submitted from the public site.</p></div></div><div class="panel">${COMMENTS.map(c=>`<div class="comment-card"><div class="comment-meta"><b>${escapeHTML(c.n)}</b><span>${escapeHTML(c.d)} · ${c.status}</span></div><p>${escapeHTML(c.t)}</p><div class="form-actions" style="margin-top:10px">${c.status!=="approved"?`<button class="btn btn-primary" data-comment-approve="${c.id}">Approve</button>`:""}<button class="btn btn-ghost" data-comment-delete="${c.id}">Delete</button></div></div>`).join("")||'<p class="empty-state">No comments have been submitted.</p>'}</div>`;
 }
 function adminFeedback(){
-  const feedback=[{n:"Student A",rating:5,t:"The event calendar is easy to use."},{n:"Student C",rating:4,t:"Please add more photos after each event."},{n:"Faculty",rating:5,t:"Announcements are clear and timely."}];
-  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Feedback</h3><p>Review ratings and suggestions from the TPC community.</p></div></div><div class="panel"><div class="pending" style="margin-bottom:16px"><div><b>4.7</b><span>Average rating</span></div><div><b>${feedback.length}</b><span>Recent responses</span></div></div>${feedback.map(f=>`<div class="comment-card"><div class="comment-meta"><b>${f.n}</b><span>${"★".repeat(f.rating)}${"☆".repeat(5-f.rating)}</span></div><p>${f.t}</p></div>`).join("")}</div>`;
+  const average=FEEDBACK.length?(FEEDBACK.reduce((sum,f)=>sum+Number(f.rating||0),0)/FEEDBACK.length).toFixed(1):"—";
+  $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Feedback</h3><p>Review ratings and suggestions submitted by the TPC community.</p></div></div><div class="panel"><div class="pending" style="margin-bottom:16px"><div><b>${average}</b><span>Average rating</span></div><div><b>${FEEDBACK.length}</b><span>Total responses</span></div></div>${FEEDBACK.slice().reverse().map(f=>`<div class="comment-card"><div class="comment-meta"><b>${escapeHTML(f.n)}</b><span>${"★".repeat(Number(f.rating))}${"☆".repeat(5-Number(f.rating))} · ${escapeHTML(f.d||"")}</span></div><p>${escapeHTML(f.t)}</p></div>`).join("")||'<p class="empty-state">No feedback has been submitted.</p>'}</div>`;
 }
 function adminSettings(){
   $("#aBody").innerHTML=`<div class="a-welcome"><div><h3>Settings</h3><p>Configure basic behavior for the public event portal.</p></div></div><div class="settings-grid"><section class="panel"><div class="panel-h"><h3>PUBLIC SITE</h3></div><div class="setting-row"><span>Show upcoming event statistics</span><label class="switch"><input type="checkbox" checked><span class="slider-switch"></span></label></div><div class="setting-row"><span>Show announcements</span><label class="switch"><input type="checkbox" checked><span class="slider-switch"></span></label></div><div class="setting-row"><span>Allow public comments</span><label class="switch"><input type="checkbox" checked><span class="slider-switch"></span></label></div></section><section class="panel"><div class="panel-h"><h3>ADMIN ACCOUNT</h3></div><div class="notice">Demo authentication is currently stored in this front-end prototype. For production, connect this screen to a secure server-side authentication system.</div><button class="btn btn-ghost" data-toast="Password change flow is ready for backend integration">Change password</button></section></div>`;
 }
 function adminDashboard(){
-  const recent = [...EVENTS].sort((a,b)=>pd(b.start)-pd(a.start)).slice(0,6);
+  const recent = [...approvedEvents()].sort((a,b)=>pd(b.start)-pd(a.start)).slice(0,6);
   const regs = EVENTS.reduce((s,e)=>s+e.regs,0);
   const pendingRegs = REGISTRATIONS.filter(r=>r.status==="pending").length;
   $("#aBody").innerHTML = `
-    <div class="a-welcome"><div><h3>Welcome back, Admin</h3><p>Here is what is happening with TPC events today.</p></div><button class="btn btn-primary" id="quickAdd">${icon("plus")} Add upcoming event</button></div>
+    <div class="a-welcome"><div><h3>Welcome back, Admin</h3><p>Here is what is happening with TPC events today.</p></div></div>
     <div class="stats">${statCards()}</div>
-    <div class="a-grid"><div style="display:grid;gap:20px"><section class="panel"><div class="panel-h"><h3>RECENT EVENTS</h3><a class="link" href="#" data-go="Events">Manage events →</a></div><div class="tbl-wrap"><table><thead><tr><th>Event</th><th>Date / Time</th><th>Venue</th><th>Registered</th><th>Status / Approval</th><th></th></tr></thead><tbody>${eventRows(recent)}</tbody></table></div></section><section class="panel"><div class="panel-h"><h3>RECENT ACTIVITY</h3></div><ul class="feed">${ACTIVITY.map(a=>`<li><div class="ic">${icon(a.ic)}</div><div>${a.t}<small>${a.d}</small></div></li>`).join("")}</ul></section></div>
+    <div class="a-grid"><div style="display:grid;gap:20px"><section class="panel"><div class="panel-h"><h3>RECENT EVENTS</h3><a class="link" href="#" data-go="Events">Manage events →</a></div><div class="tbl-wrap"><table><thead><tr><th>Event</th><th>Date / Time</th><th>Venue</th><th>Status / Approval</th><th></th></tr></thead><tbody>${eventRows(recent)}</tbody></table></div></section><section class="panel"><div class="panel-h"><h3>RECENT ACTIVITY</h3></div><ul class="feed">${ACTIVITY.map(a=>`<li><div class="ic">${icon(a.ic)}</div><div>${a.t}<small>${a.d}</small></div></li>`).join("")}</ul></section></div>
     <div style="display:grid;gap:20px"><section class="panel"><div class="panel-h"><h3>CALENDAR</h3></div><div class="cal-h"><button data-cal="-1" data-t="adm" aria-label="Previous month">${icon("left")}</button><span id="admCalTitle"></span><button data-cal="1" data-t="adm" aria-label="Next month">${icon("right")}</button></div><div class="cal" id="admCal"></div><div class="legend"><span>Approved event names appear on their scheduled dates</span></div></section><section class="panel"><div class="panel-h"><h3>NEEDS ATTENTION</h3></div><div class="pending"><div><b>${pendingRegs}</b><span>Pending registrations</span></div><div><b>${regs}</b><span>Total approved registrations</span></div><div><b>4</b><span>New feedback</span></div><div><b>${ANNOUNCEMENTS.length}</b><span>Active announcements</span></div></div></section><section class="panel"><div class="panel-h"><h3>ANNOUNCEMENTS</h3><a class="link" href="#" data-go="Announcements">View all →</a></div><ul class="feed">${ANNOUNCEMENTS.map(a=>`<li><div class="ic">${icon("mega")}</div><div><b>${a.t}</b><small>${a.d}</small></div></li>`).join("")}</ul></section></div></div>`;
-  drawCal("adm","#admCal","#admCalTitle"); $("#quickAdd").onclick=()=>openEventModal();
+  drawCal("adm","#admCal","#admCalTitle");
 }
 function renderAdmin(){
   renderNav(); $("#aTitle").textContent=page;
@@ -996,29 +1232,45 @@ function renderAdmin(){
   if(page==="Setting") return adminSettings();
 }
 $("#aBody").addEventListener("click",e=>{
-  const g=e.target.closest("[data-go]"); if(g){e.preventDefault();page=g.dataset.go;renderAdmin();return}
+  const g=e.target.closest("[data-go]"); if(g){e.preventDefault();page=g.dataset.go;if(page==="Events")eventFilter="all";renderAdmin();return}
   const f=e.target.closest("[data-filter]"); if(f){eventFilter=f.dataset.filter;page="Events";renderAdmin();return}
   const edit=e.target.closest("[data-event-edit]"); if(edit){const x=EVENTS.find(ev=>String(ev.id)===String(edit.dataset.eventEdit));if(x) openEventModal(x);return}
-  const view=e.target.closest("[data-event-view]"); if(view){const x=EVENTS.find(e=>String(e.id)===String(view.dataset.eventView));if(x) toast(`${x.title} · ${fmtRange(x)}`);return}
+  const view=e.target.closest("[data-event-view]"); if(view){const x=EVENTS.find(ev=>String(ev.id)===String(view.dataset.eventView));if(x) showPublicEventDetails(x.id);return}
   const del=e.target.closest("[data-event-delete]"); if(del){const x=EVENTS.find(e=>String(e.id)===String(del.dataset.eventDelete));if(x&&confirm(`Delete ${x.title}?`)){const i=EVENTS.indexOf(x);EVENTS.splice(i,1);saveData();renderAdmin();renderPublic();toast("Event deleted")};return}
   const ae=e.target.closest("[data-ann-edit]"); if(ae){announcementForm(Number(ae.dataset.annEdit));return}
   const ad=e.target.closest("[data-ann-delete]"); if(ad){if(confirm("Delete this announcement?")){ANNOUNCEMENTS.splice(Number(ad.dataset.annDelete),1);saveData();adminAnnouncements();renderPublic();toast("Announcement deleted")};return}
   const eventApprove=e.target.closest("[data-event-approve]"); if(eventApprove){const ev=EVENTS.find(x=>String(x.id)===String(eventApprove.dataset.eventApprove));if(ev&&(ev.approval||"approved")==="pending"){const conflicts=findEventConflicts(ev,ev.id);if(conflicts.length){toast(`Cannot approve: conflicts with ${conflicts.map(x=>x.title).join(", ")}.`);return;}ev.approval="approved";saveData();renderAdmin();renderPublic();if($("#admCal"))drawCal("adm","#admCal","#admCalTitle");if($("#pubCal"))drawCal("pub","#pubCal","#pubCalTitle");toast("Event approved and added to calendar");}return}
   const eventReject=e.target.closest("[data-event-reject]"); if(eventReject){const ev=EVENTS.find(x=>String(x.id)===String(eventReject.dataset.eventReject));if(ev){ev.approval="rejected";saveData();renderAdmin();renderPublic();toast("Event rejected");}return}
-  const approve=e.target.closest("[data-reg-approve]"); if(approve){const r=REGISTRATIONS.find(x=>String(x.id)===String(approve.dataset.regApprove));if(r&&r.status==="pending"){r.status="approved";const ev=EVENTS.find(x=>x.id===Number(r.eventId));if(ev)ev.regs=(Number(ev.regs)||0)+1;saveData();adminRegistration();renderPublic();toast("Registration approved");}return}
+  const approve=e.target.closest("[data-reg-approve]"); if(approve){const r=REGISTRATIONS.find(x=>String(x.id)===String(approve.dataset.regApprove));if(r&&r.status==="pending"){
+    if(r.requestType==="event-proposal"){
+      const candidate={start:r.date,end:r.endDate||r.date,startTime:r.startTime||"00:00",endTime:r.endTime||"23:59"};
+      const conflicts=findEventConflicts(candidate);
+      if(conflicts.length){toast(`Cannot approve: schedule conflicts with ${conflicts.map(x=>x.title).join(", ")}. Ask the applicant to choose another date or time.`);return;}
+      if(EVENTS.some(x=>String(x.title||"").trim().toLowerCase()===String(r.eventName||"").trim().toLowerCase()&&x.start===r.date&&x.approval==="approved")){toast("Cannot approve: an event with the same name and date already exists.");return;}
+      const event={id:nextEventId(),title:String(r.eventName||"Proposed Event").trim(),desc:`Event proposal submitted by ${r.name||"a TPC community member"}.`,start:r.date,end:r.endDate||r.date,startTime:r.startTime||"08:00",endTime:r.endTime||"17:00",place:r.venue||"TPC Campus",aud:"TPC community",status:eventStatusForDate(r.date,r.endDate||r.date),approval:"approved",icon:"cal",color:["#166534","#0b3d1e"],regs:0};
+      EVENTS.push(event);r.eventId=event.id;r.status="approved";r.approvedEventId=event.id;
+      saveData();renderAdmin();renderPublic();drawCal("pub","#pubCal","#pubCalTitle");if($("#admCal"))drawCal("adm","#admCal","#admCalTitle");toast("Event proposal approved and added to both calendars");
+    }else{r.status="approved";const ev=EVENTS.find(x=>x.id===Number(r.eventId));if(ev)ev.regs=(Number(ev.regs)||0)+1;saveData();renderAdmin();renderPublic();toast("Registration approved");}
+  }return}
   const reject=e.target.closest("[data-reg-reject]"); if(reject){const r=REGISTRATIONS.find(x=>String(x.id)===String(reject.dataset.regReject));if(r&&r.status==="pending"){r.status="rejected";saveData();adminRegistration();toast("Registration rejected");}return}
+  const ca=e.target.closest("[data-comment-approve]"); if(ca){const c=COMMENTS.find(x=>String(x.id)===ca.dataset.commentApprove);if(c){c.status="approved";saveData();adminComments();toast("Comment approved");}return;}
+  const cd=e.target.closest("[data-comment-delete]"); if(cd){if(confirm("Delete this comment?")){const i=COMMENTS.findIndex(x=>String(x.id)===cd.dataset.commentDelete);if(i>=0)COMMENTS.splice(i,1);saveData();adminComments();toast("Comment deleted");}return;}
+  const letterBtn=e.target.closest("[data-letter-view]"); if(letterBtn){const key=letterBtn.dataset.letterView;const viewer=window.open("about:blank","_blank");if(!viewer){toast("Allow pop-ups to view the uploaded letter.");return;}readLetter(key).then(data=>{if(!data){viewer.close();toast("The uploaded letter could not be found. Please ask the applicant to upload it again.");return;}viewer.location.href=data;}).catch(()=>{viewer.close();toast("Could not open the uploaded letter. Please try again.");});return;}
   const t=e.target.closest("[data-toast]"); if(t) toast(t.dataset.toast);
 });
 
 /* ============ VIEW SWITCHING ============ */
 function showAdmin(){ setAdminDrawer(false); $("#publicView").classList.add("hidden"); $("#adminView").classList.remove("hidden"); page="Dashboard"; renderAdmin(); window.scrollTo(0,0) }
 function showPublic(){ setAdminDrawer(false); $("#adminView").classList.add("hidden"); $("#publicView").classList.remove("hidden"); renderPublicExtras(); renderPublic(); window.scrollTo(0,0) }
-$("#logoutBtn").onclick = ()=>{ store.del("tpc_admin"); showPublic(); toast("You have been logged out") };
+$("#logoutBtn").onclick = ()=>{ store.del("tpc_admin"); try{sessionStorage.removeItem("tpc_admin")}catch(e){} showPublic(); toast("You have been logged out") };
 $("#viewSite").onclick = showPublic;
 
 /* ============ START ============ */
+// Never treat a previous browser-local admin flag as an automatic login.
+store.del("tpc_admin");
 renderPublic();
-if(store.get("tpc_admin")==="1") showAdmin(); else { showPublic(); showPublicPage("dashboard"); }
+const yearEl=$("#copyrightYear"); if(yearEl) yearEl.textContent=TODAY.getFullYear();
+showPublic(); showPublicPage("dashboard");
 </script>
 </body>
 </html>
